@@ -1,0 +1,8 @@
+/**
+ * Include all error headers.
+ * @author Julio C. Galindo (stickM4N)
+ * @file stick_error
+ */
+#include "stick/error/base_error.hpp"
+#include "stick/error/generic_error.hpp"
+#include "stick/error/memory_error.hpp"

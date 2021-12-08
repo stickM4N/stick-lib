@@ -1,0 +1,59 @@
+/**
+    ███████╗████████╗██╗ ██████╗██╗  ██╗      ██╗     ██╗██████╗
+    ██╔════╝╚══██╔══╝██║██╔════╝██║ ██╔╝██╗██╗██║     ██║██╔══██╗
+    ███████╗   ██║   ██║██║     █████╔╝ ╚═╝╚═╝██║     ██║██████╔╝
+    ╚════██║   ██║   ██║██║     ██╔═██╗ ██╗██╗██║     ██║██╔══██╗
+    ███████║   ██║   ██║╚██████╗██║  ██╗╚═╝╚═╝███████╗██║██████╔╝
+    ╚══════╝   ╚═╝   ╚═╝ ╚═════╝╚═╝  ╚═╝      ╚══════╝╚═╝╚═════╝    by stickM4N
+
+ * Library header.
+ * @author Julio C. Galindo (stickM4N)
+ * @file stick_lib
+ * @copyright Copyright 2021 stickM4N. This project is released under GNU GPLv3.
+ * @version @CMAKE_PROJECT_VERSION@
+ */
+
+
+#define stick_lib_NAME "stick::lib"   ///< Library name.
+
+/**
+ * Create a standardized version integer format for the library version
+ * (v.vv.vvv.vv).
+ * @param [in] major Major version number.
+ * @param [in] minor Minor 2-digits version number.
+ * @param [in] patch Patch 3-digits version number.
+ * @param [in] tweak Tweak 2-digits version number.
+ * @return Standardized integer version of the library.
+ */
+#define stick_lib_MAKE_VERSION(major, minor, patch, tweak)                     \
+	((major)*10000000 + (minor) % 100 * 100000 + (patch) % 1000 * 100          \
+	 + (tweak) % 100)
+
+#define stick_lib_VERSION_MAJOR                                                \
+	@PROJECT_VERSION_MAJOR @   ///< stick::lib major version number.
+#define stick_lib_VERSION_MINOR                                                \
+	@PROJECT_VERSION_MINOR @   ///< stick::lib minor version number.
+#define stick_lib_VERSION_PATCH                                                \
+	@PROJECT_VERSION_PATCH @   ///< stick::lib patch version number.
+#define stick_lib_VERSION_TWEAK                                                \
+	@PROJECT_VERSION_TWEAK @   ///< stick::lib tweak version number.
+
+#define stick_lib_VERSION                                                      \
+	stick_lib_MAKE_VERSION(@PROJECT_VERSION_MAJOR @, @PROJECT_VERSION_MINOR @, \
+	                       @PROJECT_VERSION_PATCH @,                           \
+	                       @PROJECT_VERSION_TWEAK                              \
+	                       @)   ///< Current stick::lib version number.
+
+#define stick_lib_VERSION_STR                                                  \
+	"@CMAKE_PROJECT_VERSION@"   ///< Current stick::lib version string.
+
+
+/// stick::lib ASCII art logo.
+#define stick_lib_ASCII_ART                                                    \
+	"\
+███████╗████████╗██╗ ██████╗██╗  ██╗      ██╗     ██╗██████╗\n\
+██╔════╝╚══██╔══╝██║██╔════╝██║ ██╔╝██╗██╗██║     ██║██╔══██╗\n\
+███████╗   ██║   ██║██║     █████╔╝ ╚═╝╚═╝██║     ██║██████╔╝\n\
+╚════██║   ██║   ██║██║     ██╔═██╗ ██╗██╗██║     ██║██╔══██╗\n\
+███████║   ██║   ██║╚██████╗██║  ██╗╚═╝╚═╝███████╗██║██████╔╝\n\
+╚══════╝   ╚═╝   ╚═╝ ╚═════╝╚═╝  ╚═╝      ╚══════╝╚═╝╚═════╝    by stickM4N\n"

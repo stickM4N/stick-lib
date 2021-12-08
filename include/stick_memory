@@ -1,0 +1,8 @@
+/**
+ * Include all memory headers.
+ * @author Julio C. Galindo (stickM4N)
+ * @file stick_memory
+ */
+#include "stick/memory/management.hpp"
+#include "stick/memory/scoped_pointer.hpp"
+#include "stick/memory/storage.hpp"

@@ -1,0 +1,7 @@
+/**
+ * Include all string headers.
+ * @author Julio C. Galindo (stickM4N)
+ * @file stick_string
+ */
+#include "stick/string/cstring.hpp"
+#include "stick/string/wcstring.hpp"

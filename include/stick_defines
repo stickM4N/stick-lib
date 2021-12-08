@@ -1,0 +1,11 @@
+/**
+ * Include all defines headers.
+ * @author Julio C. Galindo (stickM4N)
+ * @file stick_defines
+ */
+#include "stick/defines/arch.hpp"
+#include "stick/defines/compiler.hpp"
+#include "stick/defines/endian.hpp"
+#include "stick/defines/os.hpp"
+#include "stick/defines/predef.hpp"
+#include "stick/defines/types.hpp"
