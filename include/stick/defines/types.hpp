@@ -75,6 +75,27 @@ namespace stick {
 	typedef const wchar_t *const_wcstring;
 
 
+#	define stick_int8_MIN 0x80
+#	define stick_int8_MAX 0x7F
+#	define stick_uint8_MIN 0x00
+#	define stick_uint8_MAX 0xFF
+
+#	define stick_int16_MIN 0x8000
+#	define stick_int16_MAX 0x7FFF
+#	define stick_uint16_MIN 0x0000
+#	define stick_uint16_MAX 0xFFFF
+
+#	define stick_int32_MIN 0x80000000
+#	define stick_int32_MAX 0x7FFFFFFF
+#	define stick_uint32_MIN 0x00000000
+#	define stick_uint32_MAX 0xFFFFFFFF
+
+#	define stick_int64_MIN 0x8000000000000000
+#	define stick_int64_MAX 0x7FFFFFFFFFFFFFFF
+#	define stick_uint64_MIN 0x0000000000000000
+#	define stick_uint64_MAX 0xFFFFFFFFFFFFFFFF
+
+
 }   // namespace stick
 
 
