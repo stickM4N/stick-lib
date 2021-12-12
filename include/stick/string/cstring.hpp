@@ -60,15 +60,37 @@ namespace stick {
 	 * @param [in] length Length to compare in the strings.
 	 * @return True if the strings are identical, false otherwise.
 	 */
-	bool_t str_compare(const_cstring str_1, const_cstring str_2,
-	                   size_t length) noexcept;
+	bool_t str_equal(const_cstring str_1, const_cstring str_2,
+	                 size_t length) noexcept;
 	/**
 	 * Compares two string contents.
 	 * @param [in] str_1 First string to campare.
 	 * @param [in] str_2 Second string to compare.
 	 * @return True if the strings are identical, false otherwise.
 	 */
-	bool_t str_compare(const_cstring str_1, const_cstring str_2) noexcept;
+	bool_t str_equal(const_cstring str_1, const_cstring str_2) noexcept;
+
+
+	/**
+	 * Checks if the first string is sorted in relation to the second string
+	 * according to the ASCII code.
+	 * @param [in] str_1 First string to campare.
+	 * @param [in] str_2 Second string to compare.
+	 * @param [in] length Length to compare in the strings.
+	 * @return True if the first string is sorted ahead of the second, false
+	 * otherwise.
+	 */
+	bool_t str_sorted(const_cstring str_1, const_cstring str_2,
+	                  size_t length) noexcept;
+	/**
+	 * Checks if the first string is sorted in relation to the second string
+	 * according to the ASCII code.
+	 * @param [in] str_1 First string to campare.
+	 * @param [in] str_2 Second string to compare.
+	 * @return True if the first string is sorted ahead of the second, false
+	 * otherwise.
+	 */
+	bool_t str_sorted(const_cstring str_1, const_cstring str_2) noexcept;
 
 
 	/**
@@ -77,19 +99,23 @@ namespace stick {
 	 * @param [in] length Length of the string to copy.
 	 * @param [in] destination_str Pointer to the beginning of the string to
 	 * copy to.
+	 * @param [in] set_end Set null character at the end of the copied string.
+	 * Default = true.
 	 * @return Pointer to the updated destination string.
 	 */
 	cstring str_copy(const_cstring source_str, size_t length,
-	                 cstring destination_str) noexcept;
+	                 cstring destination_str, bool_t set_end = true) noexcept;
 	/**
 	 * Copies a string with the given length to the target string.
 	 * @param [in] source_str Pointer to the beginning of the string to copy.
 	 * @param [in] destination_str Pointer to the beginning of the string to
 	 * copy to.
+	 * @param [in] set_end Set null character at the end of the copied string.
+	 * Default = true.
 	 * @return Pointer to the updated destination string.
 	 */
-	cstring str_copy(const_cstring source_str,
-	                 cstring destination_str) noexcept;
+	cstring str_copy(const_cstring source_str, cstring destination_str,
+	                 bool_t set_end = true) noexcept;
 
 
 	/**

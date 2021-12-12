@@ -42,29 +42,47 @@ namespace stick {
 	}
 
 
-	bool_t str_compare(const_cstring str_1, const_cstring str_2,
-	                   size_t length) noexcept {
+	bool_t str_equal(const_cstring str_1, const_cstring str_2,
+	                 size_t length) noexcept {
 		for (size_t i = 0ul; i < length; i++)
 			if (str_1[i] != str_2[i])
 				return false;
 
 		return true;
 	}
-	bool_t str_compare(const_cstring str_1, const_cstring str_2) noexcept {
-		return str_compare(str_1, str_2, str_length(str_1));
+	bool_t str_equal(const_cstring str_1, const_cstring str_2) noexcept {
+		return str_equal(str_1, str_2, str_length(str_1));
+	}
+
+
+	bool_t str_sorted(const_cstring str_1, const_cstring str_2,
+	                  size_t length) noexcept {
+		for (size_t i = 0ul; i < length; i++)
+			if (str_1[i] < str_2[i])
+				return true;
+			else if (str_1[i] > str_2[i])
+				return false;
+
+		return true;
+	}
+	bool_t str_sorted(const_cstring str_1, const_cstring str_2) noexcept {
+		return str_sorted(str_1, str_2, str_length(str_1));
 	}
 
 
 	cstring str_copy(const_cstring source_str, size_t length,
-	                 cstring destination_str) noexcept {
+	                 cstring destination_str, bool_t set_end) noexcept {
 		copy(source_str, destination_str, length);
-		destination_str[length] = str_end;
+
+		if (set_end)
+			destination_str[length] = str_end;
 
 		return destination_str;
 	}
-	cstring str_copy(const_cstring source_str,
-	                 cstring destination_str) noexcept {
-		return str_copy(source_str, str_length(source_str), destination_str);
+	cstring str_copy(const_cstring source_str, cstring destination_str,
+	                 bool_t set_end) noexcept {
+		return str_copy(source_str, str_length(source_str), destination_str,
+		                set_end);
 	}
 
 

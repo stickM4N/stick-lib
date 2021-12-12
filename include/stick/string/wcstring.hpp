@@ -60,15 +60,37 @@ namespace stick {
 	 * @param [in] length Length to compare in the strings.
 	 * @return True if the strings are identical, false otherwise.
 	 */
-	bool_t wstr_compare(const_wcstring str_1, const_wcstring str_2,
-	                    size_t length) noexcept;
+	bool_t wstr_equal(const_wcstring str_1, const_wcstring str_2,
+	                  size_t length) noexcept;
 	/**
 	 * Compares two string contents.
 	 * @param [in] str_1 First string to campare.
 	 * @param [in] str_2 Second string to compare.
 	 * @return True if the strings are identical, false otherwise.
 	 */
-	bool_t wstr_compare(const_wcstring str_1, const_wcstring str_2) noexcept;
+	bool_t wstr_equal(const_wcstring str_1, const_wcstring str_2) noexcept;
+
+
+	/**
+	 * Checks if the first string is sorted in relation to the second string
+	 * according to the ASCII code.
+	 * @param [in] str_1 First string to campare.
+	 * @param [in] str_2 Second string to compare.
+	 * @param [in] length Length to compare in the strings.
+	 * @return True if the first string is sorted ahead of the second, false
+	 * otherwise.
+	 */
+	bool_t wstr_sorted(const_wcstring str_1, const_wcstring str_2,
+	                   size_t length) noexcept;
+	/**
+	 * Checks if the first string is sorted in relation to the second string
+	 * according to the ASCII code.
+	 * @param [in] str_1 First string to campare.
+	 * @param [in] str_2 Second string to compare.
+	 * @return True if the first string is sorted ahead of the second, false
+	 * otherwise.
+	 */
+	bool_t wstr_sorted(const_wcstring str_1, const_wcstring str_2) noexcept;
 
 
 	/**
@@ -77,19 +99,24 @@ namespace stick {
 	 * @param [in] length Length of the string to copy.
 	 * @param [in] destination_str Pointer to the beginning of the string to
 	 * copy to.
+	 * @param [in] set_end Set null character at the end of the copied string.
+	 * Default = true.
 	 * @return Pointer to the updated destination string.
 	 */
 	wcstring wstr_copy(const_wcstring source_str, size_t length,
-	                   wcstring destination_str) noexcept;
+	                   wcstring destination_str,
+	                   bool_t set_end = true) noexcept;
 	/**
 	 * Copies a wcstring with the given length to the target wcstring.
 	 * @param [in] source_str Pointer to the beginning of the string to copy.
 	 * @param [in] destination_str Pointer to the beginning of the string to
 	 * copy to.
+	 * @param [in] set_end Set null character at the end of the copied string.
+	 * Default = true.
 	 * @return Pointer to the updated destination wcstring.
 	 */
-	wcstring wstr_copy(const_wcstring source_str,
-	                   wcstring destination_str) noexcept;
+	wcstring wstr_copy(const_wcstring source_str, wcstring destination_str,
+	                   bool_t set_end = true) noexcept;
 
 
 	/**

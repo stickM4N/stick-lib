@@ -44,29 +44,47 @@ namespace stick {
 	}
 
 
-	bool_t wstr_compare(const_wcstring str_1, const_wcstring str_2,
-	                    size_t length) noexcept {
+	bool_t wstr_equal(const_wcstring str_1, const_wcstring str_2,
+	                  size_t length) noexcept {
 		for (size_t i = 0ul; i < length; i++)
 			if (str_1[i] != str_2[i])
 				return false;
 
 		return true;
 	}
-	bool_t wstr_compare(const_wcstring str_1, const_wcstring str_2) noexcept {
-		return wstr_compare(str_1, str_2, wstr_length(str_1));
+	bool_t wstr_equal(const_wcstring str_1, const_wcstring str_2) noexcept {
+		return wstr_equal(str_1, str_2, wstr_length(str_1));
+	}
+
+
+	bool_t wstr_sorted(const_wcstring str_1, const_wcstring str_2,
+	                   size_t length) noexcept {
+		for (size_t i = 0ul; i < length; i++)
+			if (str_1[i] < str_2[i])
+				return true;
+			else if (str_1[i] > str_2[i])
+				return false;
+
+		return true;
+	}
+	bool_t wstr_sorted(const_wcstring str_1, const_wcstring str_2) noexcept {
+		return wstr_sorted(str_1, str_2, wstr_length(str_1));
 	}
 
 
 	wcstring wstr_copy(const_wcstring source_str, size_t length,
-	                   wcstring destination_str) noexcept {
+	                   wcstring destination_str, bool_t set_end) noexcept {
 		copy(source_str, destination_str, length);
-		destination_str[length] = wstr_end;
+
+		if (set_end)
+			destination_str[length] = wstr_end;
 
 		return destination_str;
 	}
-	wcstring wstr_copy(const_wcstring source_str,
-	                   wcstring destination_str) noexcept {
-		return wstr_copy(source_str, wstr_length(source_str), destination_str);
+	wcstring wstr_copy(const_wcstring source_str, wcstring destination_str,
+	                   bool_t set_end) noexcept {
+		return wstr_copy(source_str, wstr_length(source_str), destination_str,
+		                 set_end);
 	}
 
 
