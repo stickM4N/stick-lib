@@ -3,5 +3,7 @@
  * @author Julio C. Galindo (stickM4N)
  * @file stick_string
  */
+#include "stick/string/casting.hpp"
 #include "stick/string/cstring.hpp"
+#include "stick/string/wcasting.hpp"
 #include "stick/string/wcstring.hpp"

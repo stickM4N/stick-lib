@@ -72,6 +72,25 @@ namespace stick {
 	}
 
 
+	bool_t wchar_is_numeric(const char_t character) noexcept {
+		if (L'0' <= character and character <= L'9')
+			return true;
+		else
+			return false;
+	}
+
+	bool_t wstr_is_numeric(const_wcstring string, size_t length) noexcept {
+		for (size_t i = 0ul; i < length; i++)
+			if (not wchar_is_numeric(string[i]))
+				return false;
+
+		return true;
+	}
+	bool_t wstr_is_numeric(const_wcstring string) noexcept {
+		return wstr_is_numeric(string, wstr_length(string));
+	}
+
+
 	wcstring wstr_copy(const_wcstring source_str, size_t length,
 	                   wcstring destination_str, bool_t set_end) noexcept {
 		copy(source_str, destination_str, length);

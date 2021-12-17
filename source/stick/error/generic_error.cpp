@@ -39,4 +39,4 @@ namespace stick {
 }   // namespace stick
 
 
-#endif
+#endif   //_stick_lib_error_generic_

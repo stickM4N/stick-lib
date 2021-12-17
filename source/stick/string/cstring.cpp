@@ -70,6 +70,25 @@ namespace stick {
 	}
 
 
+	bool_t char_is_numeric(const char_t character) noexcept {
+		if ('0' <= character and character <= '9')
+			return true;
+		else
+			return false;
+	}
+
+	bool_t str_is_numeric(const_cstring string, size_t length) noexcept {
+		for (size_t i = 0ul; i < length; i++)
+			if (not char_is_numeric(string[i]))
+				return false;
+
+		return true;
+	}
+	bool_t str_is_numeric(const_cstring string) noexcept {
+		return str_is_numeric(string, str_length(string));
+	}
+
+
 	cstring str_copy(const_cstring source_str, size_t length,
 	                 cstring destination_str, bool_t set_end) noexcept {
 		copy(source_str, destination_str, length);

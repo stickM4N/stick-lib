@@ -39,9 +39,15 @@ add_library("lib" STATIC
         "source/stick/error/generic_error.cpp"
         "include/stick/error/memory_error.hpp"
         "source/stick/error/memory_error.cpp"
+        "include/stick/error/cast_error.hpp"
+        "source/stick/error/cast_error.cpp"
         #   string
+        "include/stick/string/casting.hpp"
+        "source/stick/string/casting.cpp"
         "include/stick/string/cstring.hpp"
         "source/stick/string/cstring.cpp"
+        "include/stick/string/wcasting.hpp"
+        "source/stick/string/wcasting.cpp"
         "include/stick/string/wcstring.hpp"
         "source/stick/string/wcstring.cpp")
 

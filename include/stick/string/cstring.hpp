@@ -94,6 +94,28 @@ namespace stick {
 
 
 	/**
+	 * Checks if the character is a number.
+	 * @param character Character to be checked.
+	 * @return True if the character is a number, false otherwise.
+	 */
+	bool_t char_is_numeric(char_t character) noexcept;
+	/**
+	 * Checks if the string is made by numeric characters.
+	 * @param string The string to be checked.
+	 * @param length The length of the string to be checked.
+	 * @return True if all chars in the string are numbers, false otherwise.
+	 */
+
+	bool_t str_is_numeric(const_cstring string, size_t length) noexcept;
+	/**
+	 * Checks if the string is made by numeric characters.
+	 * @param string The string to be checked.
+	 * @return True if all chars in the string are numbers, false otherwise.
+	 */
+	bool_t str_is_numeric(const_cstring string) noexcept;
+
+
+	/**
 	 * Copies a string with the given length to the target string.
 	 * @param [in] source_str Pointer to the beginning of the string to copy.
 	 * @param [in] length Length of the string to copy.

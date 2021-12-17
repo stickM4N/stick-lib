@@ -18,7 +18,7 @@ namespace stick {
 	memory_error::memory_error(const_cstring description) noexcept {
 		size_t length = str_length(description);
 		this->description_cache = new_str(length + 26);
-		str_copy("Memory management error. ", this->description_cache);
+		str_copy("Memory management error. ", 25, this->description_cache);
 		str_copy(description, length, &this->description_cache[25]);
 	}
 	memory_error::memory_error(const memory_error &error) noexcept {
@@ -42,4 +42,4 @@ namespace stick {
 }   // namespace stick
 
 
-#endif
+#endif   //_stick_lib_error_memory_
