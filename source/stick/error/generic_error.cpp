@@ -16,7 +16,7 @@ namespace stick {
 
 
 	generic_error::generic_error(const_cstring description) noexcept {
-		this->description_cache = new_str(description, str_length(description));
+		this->description_cache = new_str(description);
 	}
 	generic_error::generic_error(const generic_error &error) noexcept {
 		this->description_cache = new_str(error.description_cache);

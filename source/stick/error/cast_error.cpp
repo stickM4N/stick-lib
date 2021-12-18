@@ -18,7 +18,7 @@ namespace stick {
 	cast_error::cast_error(const_cstring description) noexcept {
 		size_t length = str_length(description);
 		this->description_cache = new_str(length + 26);
-		str_copy("Casting error. ", 15, this->description_cache);
+		str_copy("Casting error. ", 15, this->description_cache, false);
 		str_copy(description, length, &this->description_cache[15]);
 	}
 	cast_error::cast_error(const cast_error &error) noexcept {
@@ -29,7 +29,9 @@ namespace stick {
 		delete_str(error.description_cache);
 	}
 
-	cast_error::~cast_error() noexcept { delete_str(this->description_cache); }
+	cast_error::~cast_error() noexcept {
+		delete_str(this->description_cache);
+	}
 
 
 	const_cstring cast_error::description() const noexcept {

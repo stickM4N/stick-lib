@@ -22,7 +22,9 @@ namespace stick {
 
 		return string;
 	}
-	cstring new_str(const_cstring str) { return new_str(str, str_length(str)); }
+	cstring new_str(const_cstring str) {
+		return new_str(str, str_length(str));
+	}
 	cstring new_str(size_t length) {
 		auto string = allocate<char_t>(length + 1);
 		string[0] = str_end;
@@ -30,7 +32,9 @@ namespace stick {
 		return string;
 	}
 
-	void delete_str(cstring &str) { deallocate(str); }
+	void delete_str(cstring &str) {
+		deallocate(str);
+	}
 
 
 	size_t str_length(const_cstring str) noexcept {

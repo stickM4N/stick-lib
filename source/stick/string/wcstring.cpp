@@ -32,7 +32,9 @@ namespace stick {
 		return string;
 	}
 
-	void delete_wstr(wcstring &str) { deallocate(str); }
+	void delete_wstr(wcstring &str) {
+		deallocate(str);
+	}
 
 
 	size_t wstr_length(const_wcstring str) noexcept {
