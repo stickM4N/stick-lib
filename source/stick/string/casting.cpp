@@ -147,60 +147,60 @@ namespace stick {
 
 	double128_t str_cast_to_double128(const_cstring string, size_t length) {
 
-		size_t char_position = 0ul;
-		bool_t is_negative = string[char_position] == '-';
+		size_t index = 0ul;
+		bool_t is_negative = string[index] == '-';
 		if (is_negative)
-			char_position++;
+			index++;
 
 		double128_t integer_part = 0.0l;
-		if (string[char_position] == '0')
-			char_position++;
-		else if (char_is_numeric(string[char_position]))
+		if (string[index] == '0')
+			index++;
+		else if (char_is_numeric(string[index]))
 			do
-				(integer_part *= 10) += string[char_position++] - '0';
-			while (char_is_numeric(string[char_position]));
+				(integer_part *= 10) += string[index++] - '0';
+			while (char_is_numeric(string[index]));
 		else
 			throw cast_error("Given string is not a number. No integer part.");
 
 		double128_t decimal_part = 0.0l;
-		if (string[char_position] == '.') {
-			char_position++;
+		if (string[index] == '.') {
+			index++;
 
-			if (not char_is_numeric(string[char_position]))
+			if (not char_is_numeric(string[index]))
 				throw cast_error(
 				    "Given string is not a number. Expected decimal values.");
 
 			double128_t factor = 0.1l;
 			do {
-				decimal_part += (string[char_position++] - '0') * factor;
+				decimal_part += (string[index++] - '0') * factor;
 				factor *= 0.1l;
-			} while (char_is_numeric(string[char_position]));
+			} while (char_is_numeric(string[index]));
 		}
 
 		uint8_t exponent = 0;
 		bool_t negative_exponent = false;
-		if (string[char_position] == 'E' or string[char_position] == 'e') {
-			char_position++;
+		if (string[index] == 'E' or string[index] == 'e') {
+			index++;
 
-			if (string[char_position] == '+')
-				char_position++;
-			else if (string[char_position] == '-') {
+			if (string[index] == '+')
+				index++;
+			else if (string[index] == '-') {
 				negative_exponent = true;
-				char_position++;
+				index++;
 			}
 
-			if (string[char_position] == '0')
-				char_position++;
-			else if (char_is_numeric(string[char_position]))
+			if (string[index] == '0')
+				index++;
+			else if (char_is_numeric(string[index]))
 				do
-					exponent = exponent * 10 + (string[char_position++] - '0');
-				while (char_is_numeric(string[char_position]));
+					exponent = exponent * 10 + (string[index++] - '0');
+				while (char_is_numeric(string[index]));
 			else
 				throw cast_error(
 				    "Given string is not a number. Invalid exponent.");
 		}
 
-		if (char_position != length)
+		if (index != length)
 			throw cast_error("Given string is not a number. "
 			                 "Could not be parsed completely.");
 

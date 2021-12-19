@@ -16,6 +16,18 @@ namespace stick {
 
 
 	/**
+	 * Cast basic types to string.
+	 * @tparam type Type of the value to be cast.
+	 * @param [in] value Value to be cast.
+	 * @param [in,out] string String where to copy the cast value.
+	 * Default = nullptr, to allocate a new string.
+	 * @return Newly allocated string with the cast value.
+	 */
+	template<typename type>
+	const_cstring cast_to_cstr(type value, cstring string = nullptr);
+
+
+	/**
 	 * Cast a string to nullptr.
 	 * @param [in] string String to be converted.
 	 * @param [in] length Length of the string to be converted.
@@ -257,6 +269,10 @@ namespace stick {
 
 }   // namespace stick
 
+
+#	define _stick_lib_string_casting_impl_
+#	include "../string/casting_impl.hpp"
+#	undef _stick_lib_string_casting_impl_
 
 
 #endif   //_stick_lib_string_casting_

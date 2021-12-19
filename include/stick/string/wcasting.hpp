@@ -16,6 +16,18 @@ namespace stick {
 
 
 	/**
+	 * Cast basic types to wide string.
+	 * @tparam type Type of the value to be cast.
+	 * @param [in] value Value to be cast.
+	 * @param [in,out] string String where to copy the cast value.
+	 * Default = nullptr, to allocate a new string.
+	 * @return Newly allocated string with the cast value.
+	 */
+	template<typename type>
+	const_wcstring cast_to_wcstr(type value, wcstring string = nullptr);
+
+
+	/**
 	 * Cast a string to nullptr.
 	 * @param [in] string String to be converted.
 	 * @param [in] length Length of the string to be converted.
@@ -257,6 +269,10 @@ namespace stick {
 
 }   // namespace stick
 
+
+#	define _stick_lib_string_wcasting_impl_
+#	include "../string/wcasting_impl.hpp"
+#	undef _stick_lib_string_wcasting_impl_
 
 
 #endif   //_stick_lib_string_wcasting_

@@ -74,7 +74,7 @@ namespace stick {
 	}
 
 
-	bool_t wchar_is_numeric(const char_t character) noexcept {
+	bool_t wchar_is_numeric(const wchar_t character) noexcept {
 		if (L'0' <= character and character <= L'9')
 			return true;
 		else
