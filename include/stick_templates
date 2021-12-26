@@ -1,0 +1,6 @@
+/**
+ * Include all template headers.
+ * @author Julio C. Galindo (stickM4N)
+ * @file stick_templates
+ */
+#include "stick/templates/reference.hpp"
