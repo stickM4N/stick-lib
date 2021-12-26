@@ -33,32 +33,39 @@ namespace stick {
 		scoped_pointer() noexcept = default;
 		/**
 		 * Allocate pointer to new address with the given value.
-		 * @param value Value to be copied to the new address.
+		 * @param [in] value Value to be copied to the new address.
 		 */
-		explicit scoped_pointer(const type &value) noexcept;
+		scoped_pointer(const type &value) noexcept;
 		/**
 		 * Convert pointer to single value to scoped_pointer. Pointer will be
 		 * deallocated when scoped_pointer is called!
-		 * @param pointer Address of the value to be pointed.
+		 * @param [in] pointer Address of the value to be pointed.
 		 * @return Self instance.
 		 */
 		scoped_pointer(const type *pointer) noexcept;
 		/**
 		 * Allocate a copy of the value(s) referenced by the given pointer.
-		 * @param pointer Address of the values to be copied.
-		 * @param element_amount Number of consecutive values to be copied.
+		 * @param [in] pointer Address of the values to be copied.
+		 * @param [in] element_amount Number of consecutive values to be copied.
+		 * @param [in] extra_element_amount Number extra elements to be
+		 * allocated. Default = 0.
 		 */
-		explicit scoped_pointer(const type *pointer,
-		                        size_t element_amount = 1ul) noexcept;
+		explicit scoped_pointer(const type *pointer, size_t element_amount,
+		                        size_t extra_element_amount = 0ul) noexcept;
+		/**
+		 * Allocate elements without assigning any value.
+		 * @param [in] element_amount Number of elements to allocate.
+		 */
+		explicit scoped_pointer(size_t element_amount) noexcept;
 		/**
 		 * Copy constructor. Copy all data pointed by the target scoped_pointer.
-		 * @param pointer Target pointer to copy.
+		 * @param [in] pointer Target pointer to copy.
 		 */
 		scoped_pointer(const scoped_pointer &pointer) noexcept;
 		/**
 		 * Move constructor. Move all data pointed by the target scoped_pointer
 		 * and set it to nullptr.
-		 * @param pointer Target pointer to move.
+		 * @param [in,out] pointer Target pointer to move.
 		 */
 		scoped_pointer(scoped_pointer &&pointer) noexcept;
 
@@ -66,6 +73,18 @@ namespace stick {
 		 * Deallocate data.
 		 */
 		~scoped_pointer() noexcept;
+
+
+		/**
+		 * Get the amount of allocated elements.
+		 * @return Number of allocated elements.
+		 */
+		size_t allocated_elems() const noexcept;
+		/**
+		 * Get the amount of allocated bytes.
+		 * @return Number of allocated bytes.
+		 */
+		size_t allocated_bytes() const noexcept;
 
 
 		/**
@@ -84,7 +103,7 @@ namespace stick {
 		/**
 		 * Convert pointer to single value to scoped_pointer. Pointer will be
 		 * deallocated when scoped_pointer is called!
-		 * @param pointer Address of the data to be pointed.
+		 * @param [in] pointer Address of the data to be pointed.
 		 * @return Self instance.
 		 */
 		scoped_pointer &operator=(const type *pointer) noexcept;
