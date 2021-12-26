@@ -54,7 +54,9 @@ namespace stick {
 #		define stick_COMPILER stick_COMPILER_GCC
 
 #		if defined(__GNUC_PATCHLEVEL__)
-#			define stick_COMPILER_VERSION stick_COMPILER_MAKE_VERSION__GNUC__, __GNUC_MINOR__, __GNUC_PATCHLEVEL__)
+#			define stick_COMPILER_VERSION                                     \
+				stick_COMPILER_MAKE_VERSION(__GNUC__, __GNUC_MINOR__,          \
+				                            __GNUC_PATCHLEVEL__)
 #		else
 #			define stick_COMPILER_VERSION                                     \
 				stick_COMPILER_MAKE_VERSION(__GNUC__, __GNUC_MINOR__,          \

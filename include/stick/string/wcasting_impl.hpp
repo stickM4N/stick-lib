@@ -230,7 +230,7 @@ namespace stick {
 			string[length++] = L'.';
 
 			for (uint8_t i = 0u; i < 8 and decimal_part != 0.0l; i++) {
-				string[length++] =  L'0' + static_cast<wchar_t>(decimal_part);
+				string[length++] = L'0' + static_cast<wchar_t>(decimal_part);
 				(decimal_part -= static_cast<wchar_t>(decimal_part)) *= 10u;
 			}
 		}
@@ -258,7 +258,7 @@ namespace stick {
 			string[length++] = L'.';
 
 			for (uint8_t i = 0u; i < 8 and decimal_part != 0.0l; i++) {
-				string[length++] =  L'0' + static_cast<wchar_t>(decimal_part);
+				string[length++] = L'0' + static_cast<wchar_t>(decimal_part);
 				(decimal_part -= static_cast<wchar_t>(decimal_part)) *= 10u;
 			}
 		}
@@ -285,7 +285,7 @@ namespace stick {
 			string[length++] = L'.';
 
 			for (uint8_t i = 0u; i < 8 and decimal_part != 0.0l; i++) {
-				string[length++] =  L'0' + static_cast<wchar_t>(decimal_part);
+				string[length++] = L'0' + static_cast<wchar_t>(decimal_part);
 				(decimal_part -= static_cast<wchar_t>(decimal_part)) *= 10u;
 			}
 		}

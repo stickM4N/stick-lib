@@ -75,8 +75,7 @@ namespace stick {
 	/**
 	 * Endian types.
 	 */
-	enum class endian
-	{
+	enum class endian {
 		little = stick_ENDIAN_LITTLE,   ///< Byte order for little endian.
 		big = stick_ENDIAN_BIG,   ///< Byte order for little endian.
 		native = stick_ENDIAN   ///< Current endian byte order.
