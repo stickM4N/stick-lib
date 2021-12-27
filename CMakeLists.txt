@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.21 FATAL_ERROR)
 
 
 project("stick::lib"
-        VERSION 0.0.2.0
+        VERSION 0.0.2.2
         DESCRIPTION "Full and cross-platform implementation of many libraries without any dependencies."
         HOMEPAGE_URL "https://github.com/stickM4N/stick-lib"
         LANGUAGES CXX)
@@ -123,6 +123,3 @@ if (DOXYGEN_FOUND)
     install(DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/export/doc/"
             DESTINATION "doc/stick")
 endif ()
-
-add_executable(a test.cpp)
-target_link_libraries(a lib)

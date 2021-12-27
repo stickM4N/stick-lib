@@ -45,7 +45,10 @@ namespace stick {
 	}
 	template<typename type>
 	scoped_pointer<type>::scoped_pointer(scoped_pointer &&pointer) noexcept {
+		this->~scoped_pointer();
+
 		this->ptr = pointer.ptr;
+		this->allocated_elements = pointer.allocated_elements;
 
 		pointer.ptr = nullptr;
 		pointer.allocated_elements = 0ul;
@@ -114,6 +117,8 @@ namespace stick {
 	template<typename type>
 	scoped_pointer<type> &
 	scoped_pointer<type>::operator=(scoped_pointer &&pointer) noexcept {
+		this->~scoped_pointer();
+
 		this->ptr = pointer.ptr;
 		this->allocated_elements = pointer.allocated_elements;
 
