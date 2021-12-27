@@ -70,9 +70,11 @@ namespace stick {
 
 	typedef char_t *cstring;
 	typedef const char_t *const_cstring;
+#	define str_end '\0'
 
 	typedef wchar_t *wcstring;
 	typedef const wchar_t *const_wcstring;
+#	define wstr_end L'\0'
 
 
 #	define stick_int8_MIN int8_t(0x80)

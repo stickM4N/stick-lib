@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.21 FATAL_ERROR)
 
 
 project("stick::lib"
-        VERSION 0.0.1.40
+        VERSION 0.0.2.0
         DESCRIPTION "Full and cross-platform implementation of many libraries without any dependencies."
         HOMEPAGE_URL "https://github.com/stickM4N/stick-lib"
         LANGUAGES CXX)
@@ -47,11 +47,18 @@ add_library("lib" STATIC
         "source/stick/string/casting.cpp"
         "include/stick/string/cstring.hpp"
         "source/stick/string/cstring.cpp"
+        "include/stick/string/string.hpp"
+        "source/stick/string/string.cpp"
         "include/stick/string/wcasting.hpp"
         "include/stick/string/wcasting_impl.hpp"
         "source/stick/string/wcasting.cpp"
         "include/stick/string/wcstring.hpp"
-        "source/stick/string/wcstring.cpp")
+        "source/stick/string/wcstring.cpp"
+        "include/stick/string/wstring.hpp"
+        "source/stick/string/wstring.cpp"
+        #   templates
+        "include/stick/templates/reference.hpp"
+        "include/stick/templates/reference_impl.hpp")
 
 target_include_directories("lib" PUBLIC
         $<INSTALL_INTERFACE:include/>
@@ -116,3 +123,6 @@ if (DOXYGEN_FOUND)
     install(DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/export/doc/"
             DESTINATION "doc/stick")
 endif ()
+
+add_executable(a test.cpp)
+target_link_libraries(a lib)

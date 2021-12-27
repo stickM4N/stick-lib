@@ -5,5 +5,7 @@
  */
 #include "stick/string/casting.hpp"
 #include "stick/string/cstring.hpp"
+#include "stick/string/string.hpp"
 #include "stick/string/wcasting.hpp"
 #include "stick/string/wcstring.hpp"
+#include "stick/string/wstring.hpp"
