@@ -62,7 +62,7 @@ namespace stick {
 		 * Copy constructor.
 		 * @param [in] str String to copy from.
 		 */
-		string(const string &str) noexcept;
+		string(const string &str) noexcept = default;
 		/**
 		 * Move constructor.
 		 * @param [in,out] str String to move from and clear.

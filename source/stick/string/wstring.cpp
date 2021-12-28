@@ -16,46 +16,28 @@
 namespace stick {
 
 
-	wstring::wstring() noexcept {
-		this->str = wstr_end;
-	}
+	wstring::wstring() noexcept : str(wstr_end) { }
 	wstring::wstring(const_wcstring str, size_t length,
-	                 size_t pool_length) noexcept {
-		this->str_size = length;
-		this->pool_size = pool_length;
-
-		this->str = scoped_pointer<wchar_t>(str, length, pool_length + 1);
+	                 size_t pool_length) noexcept
+	    : str_size(length), pool_size(pool_length),
+	      str(str, length, pool_length + 1) {
 		this->str[this->str_size] = wstr_end;
 	}
 	wstring::wstring(const_wcstring str) noexcept
 	    : wstring(str, wstr_length(str)) { }
 	wstring::wstring(const wchar_t c, size_t repetitions,
-	                 size_t pool_length) noexcept {
-		this->str_size = repetitions;
-		this->pool_size = pool_length;
-
-		this->str
-		    = scoped_pointer<wchar_t>(this->str_size + this->pool_size + 1);
+	                 size_t pool_length) noexcept
+	    : str_size(repetitions), pool_size(pool_length),
+	      str(repetitions + pool_length + 1) {
 		set(this->str.operator wchar_t *(), c, this->str_size);
 		this->str[this->str_size] = wstr_end;
 	}
-	wstring::wstring(size_t length, size_t pool_length) noexcept {
-		this->str_size = 0ul;
-		this->pool_size = pool_length;
-
-		this->str = scoped_pointer<wchar_t>(length + this->pool_size + 1);
-		this->str[0] = wstr_end;
+	wstring::wstring(size_t length, size_t pool_length) noexcept
+	    : str_size(0ul), pool_size(pool_length), str(length + pool_length + 1) {
+		this->str[0] = str_end;
 	}
-	wstring::wstring(const wstring &str) noexcept {
-		this->str_size = str.str_size;
-		this->pool_size = str.pool_size;
-		this->str = str.str;
-	}
-	wstring::wstring(wstring &&str) noexcept {
-		this->str_size = str.str_size;
-		this->pool_size = str.pool_size;
-		this->str = move(str.str);
-
+	wstring::wstring(wstring &&str) noexcept
+	    : str_size(str.str_size), pool_size(str.pool_size), str(move(str.str)) {
 		str.str_size = 0ul;
 		str.pool_size = 0ul;
 	}
