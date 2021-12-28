@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.21 FATAL_ERROR)
 
 
 project("stick::lib"
-        VERSION 0.0.2.18
+        VERSION 0.0.2.30
         DESCRIPTION "Full and cross-platform implementation of many libraries without any dependencies."
         HOMEPAGE_URL "https://github.com/stickM4N/stick-lib"
         LANGUAGES CXX)
@@ -35,12 +35,14 @@ add_library("lib" STATIC
         #   error
         "include/stick/error/base_error.hpp"
         "source/stick/error/base_error.cpp"
+        "include/stick/error/cast_error.hpp"
+        "source/stick/error/cast_error.cpp"
         "include/stick/error/generic_error.hpp"
         "source/stick/error/generic_error.cpp"
         "include/stick/error/memory_error.hpp"
         "source/stick/error/memory_error.cpp"
-        "include/stick/error/cast_error.hpp"
-        "source/stick/error/cast_error.cpp"
+        "include/stick/error/out_of_range_error.hpp"
+        "source/stick/error/out_of_range_error.cpp"
         #   string
         "include/stick/string/casting.hpp"
         "include/stick/string/casting_impl.hpp"
