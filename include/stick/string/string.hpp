@@ -67,7 +67,7 @@ namespace stick {
 		 * Move constructor.
 		 * @param [in,out] str String to move from and clear.
 		 */
-		string(string &&str) noexcept;
+		string(string &&str) noexcept = default;
 
 		/**
 		 * Default destructor.

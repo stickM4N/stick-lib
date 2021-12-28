@@ -36,11 +36,6 @@ namespace stick {
 	    : str_size(0ul), pool_size(pool_length), str(length + pool_length + 1) {
 		this->str[0] = str_end;
 	}
-	wstring::wstring(wstring &&str) noexcept
-	    : str_size(str.str_size), pool_size(str.pool_size), str(move(str.str)) {
-		str.str_size = 0ul;
-		str.pool_size = 0ul;
-	}
 
 
 	const_wcstring wstring::data() const noexcept {

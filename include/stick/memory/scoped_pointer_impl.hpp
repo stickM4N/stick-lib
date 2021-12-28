@@ -15,15 +15,11 @@ namespace stick {
 
 
 	template<typename type>
-	scoped_pointer<type>::scoped_pointer(const type &value) noexcept {
-		this->ptr = allocate_value(value);
-		this->allocated_elements = 1ul;
-	}
+	scoped_pointer<type>::scoped_pointer(const type &value) noexcept
+	    : ptr(allocate_value(value)), allocated_elements(1ul) { }
 	template<typename type>
-	scoped_pointer<type>::scoped_pointer(const type *pointer) noexcept {
-		this->ptr = const_cast<type *>(pointer);
-		this->allocated_elements = 1;
-	}
+	scoped_pointer<type>::scoped_pointer(const type *pointer) noexcept
+	    : ptr(const_cast<type *>(pointer)), allocated_elements(1ul) { }
 	template<typename type>
 	scoped_pointer<type>::scoped_pointer(const type *pointer,
 	                                     size_t element_amount,
@@ -45,12 +41,8 @@ namespace stick {
 		copy(pointer.ptr, this->ptr, pointer.allocated_elements);
 	}
 	template<typename type>
-	scoped_pointer<type>::scoped_pointer(scoped_pointer &&pointer) noexcept {
-		this->~scoped_pointer();
-
-		this->ptr = pointer.ptr;
-		this->allocated_elements = pointer.allocated_elements;
-
+	scoped_pointer<type>::scoped_pointer(scoped_pointer &&pointer) noexcept
+	    : ptr(pointer.ptr), allocated_elements(pointer.allocated_elements) {
 		pointer.ptr = nullptr;
 		pointer.allocated_elements = 0ul;
 	}
