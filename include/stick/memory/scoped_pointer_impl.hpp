@@ -23,21 +23,19 @@ namespace stick {
 	template<typename type>
 	scoped_pointer<type>::scoped_pointer(const type *pointer,
 	                                     size_t element_amount,
-	                                     size_t extra_element_amount) noexcept {
-		this->allocated_elements = element_amount + extra_element_amount;
-		this->ptr = allocate<type>(this->allocated_elements);
+	                                     size_t extra_element_amount) noexcept
+	    : allocated_elements(element_amount + extra_element_amount),
+	      ptr(allocate<type>(element_amount + extra_element_amount)) {
 		copy(pointer, this->ptr, element_amount);
 	}
 	template<typename type>
-	scoped_pointer<type>::scoped_pointer(size_t element_amount) noexcept {
-		this->allocated_elements = element_amount;
-		this->ptr = allocate<type>(this->allocated_elements);
-	}
+	scoped_pointer<type>::scoped_pointer(size_t element_amount) noexcept
+	    : allocated_elements(element_amount),
+	      ptr(allocate<type>(element_amount)) { }
 	template<typename type>
-	scoped_pointer<type>::scoped_pointer(
-	    const scoped_pointer &pointer) noexcept {
-		this->ptr = allocate<type>(pointer.allocated_elements);
-		this->allocated_elements = pointer.allocated_elements;
+	scoped_pointer<type>::scoped_pointer(const scoped_pointer &pointer) noexcept
+	    : allocated_elements(pointer.allocated_elements),
+	      ptr(allocate<type>(pointer.allocated_elements)) {
 		copy(pointer.ptr, this->ptr, pointer.allocated_elements);
 	}
 	template<typename type>
