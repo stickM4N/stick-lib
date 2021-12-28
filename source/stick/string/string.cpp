@@ -54,11 +54,10 @@ namespace stick {
 	string::string(string &&str) noexcept {
 		this->str_size = str.str_size;
 		this->pool_size = str.pool_size;
-		this->str = str.str;
+		this->str = move(str.str);
 
 		str.str_size = 0ul;
 		str.pool_size = 0ul;
-		str.str.~scoped_pointer();
 	}
 
 
@@ -105,11 +104,10 @@ namespace stick {
 	string &string::operator=(string &&str) noexcept {
 		this->str_size = str.str_size;
 		this->pool_size = str.pool_size;
-		this->str = str.str;
+		this->str = move(str.str);
 
 		str.str_size = 0ul;
 		str.pool_size = 0ul;
-		str.str.~scoped_pointer();
 
 		return *this;
 	}

@@ -25,7 +25,7 @@ namespace stick {
 		this->pool_size = pool_length;
 
 		this->str = scoped_pointer<wchar_t>(str, length, pool_length + 1);
-		this->str[this->str_size] = str_end;
+		this->str[this->str_size] = wstr_end;
 	}
 	wstring::wstring(const_wcstring str) noexcept
 	    : wstring(str, wstr_length(str)) { }
@@ -37,14 +37,14 @@ namespace stick {
 		this->str
 		    = scoped_pointer<wchar_t>(this->str_size + this->pool_size + 1);
 		set(this->str.operator wchar_t *(), c, this->str_size);
-		this->str[this->str_size] = str_end;
+		this->str[this->str_size] = wstr_end;
 	}
 	wstring::wstring(size_t length, size_t pool_length) noexcept {
 		this->str_size = 0ul;
 		this->pool_size = pool_length;
 
 		this->str = scoped_pointer<wchar_t>(length + this->pool_size + 1);
-		this->str[0] = str_end;
+		this->str[0] = wstr_end;
 	}
 	wstring::wstring(const wstring &str) noexcept {
 		this->str_size = str.str_size;
@@ -54,11 +54,10 @@ namespace stick {
 	wstring::wstring(wstring &&str) noexcept {
 		this->str_size = str.str_size;
 		this->pool_size = str.pool_size;
-		this->str = str.str;
+		this->str = move(str.str);
 
 		str.str_size = 0ul;
 		str.pool_size = 0ul;
-		str.str.~scoped_pointer();
 	}
 
 
@@ -105,11 +104,10 @@ namespace stick {
 	wstring &wstring::operator=(wstring &&str) noexcept {
 		this->str_size = str.str_size;
 		this->pool_size = str.pool_size;
-		this->str = str.str;
+		this->str = move(str.str);
 
 		str.str_size = 0ul;
 		str.pool_size = 0ul;
-		str.str.~scoped_pointer();
 
 		return *this;
 	}
