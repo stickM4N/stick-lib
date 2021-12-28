@@ -91,19 +91,10 @@ namespace stick {
 
 	template<typename type>
 	type &scoped_pointer<type>::operator[](ssize_t position) const {
-		if (position >= 0) {
-			if (this->allocated_elements <= position)
-				throw out_of_range_error(
-				    "Accessing a value outside the allocated memory section.");
+		if (position < 0l)
+			position = this->allocated_elements + position + 1;
 
-			return this->ptr[position];
-		} else {
-			if (this->allocated_elements <= -position)
-				throw out_of_range_error(
-				    "Accessing a value outside the allocated memory section.");
-
-			return this->ptr[this->allocated_elements + position];
-		}
+		return this->operator[](static_cast<size_t>(position));
 	}
 	template<typename type>
 	type &scoped_pointer<type>::operator[](size_t position) const {

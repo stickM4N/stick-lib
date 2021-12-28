@@ -95,9 +95,10 @@ namespace stick {
 		if ((source_address < destination_address
 		     and source_address + element_amount >= destination_address)
 		    or (destination_address < source_address
-		        and destination_address + element_amount >= source_address)) {
-			throw memory_error("Destination data will overwrite source data.");
-		}
+		        and destination_address + element_amount >= source_address))
+			throw memory_error("Destination data will overwrite source data. "
+			                   "Consider moving instead.");
+
 		for (size_t i = 0ul; i < element_amount; i++)
 			set(&destination_address[i], source_address[i]);
 	}
@@ -108,16 +109,24 @@ namespace stick {
 
 		if (source_address == destination_address)
 			return;
-		else if (source_address < destination_address)
-			for (size_t i = element_amount - 1; i < -1ul; i--) {
+		else if (source_address < destination_address) {
+			for (size_t i = element_amount - 1; i < -1ul; i--)
 				set(&destination_address[i], source_address[i]);
-				clear(&source_address[i]);
-			}
-		else   // destination_address < source_address
-			for (size_t i = 0ul; i < element_amount; i++) {
+
+			if (source_address + element_amount >= destination_address)
+				clear(source_address, destination_address - source_address);
+			else
+				clear(source_address, element_amount);
+
+		} else {   // destination_address < source_address
+			for (size_t i = 0ul; i < element_amount; i++)
 				set(&destination_address[i], source_address[i]);
-				clear(&source_address[i]);
-			}
+
+			if (destination_address + element_amount >= source_address)
+				clear(source_address, source_address - destination_address);
+			else
+				clear(source_address, element_amount);
+		}
 	}
 
 
