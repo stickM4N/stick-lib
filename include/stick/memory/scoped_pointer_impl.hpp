@@ -7,6 +7,7 @@
 #if defined(_stick_lib_memory_scoped_pointer_impl_)
 
 
+#	include "../error/out_of_range_error.hpp"
 #	include "../memory/management.hpp"
 
 
@@ -99,18 +100,36 @@ namespace stick {
 
 
 	template<typename type>
-	type &scoped_pointer<type>::operator[](ssize_t position) {
+	type &scoped_pointer<type>::operator[](ssize_t position) const {
 		if (position >= 0) {
-			if (this->allocated_elements < position)
-				throw;
+			if (this->allocated_elements <= position)
+				throw out_of_range_error(
+				    "Accessing a value outside the allocated memory section.");
 
 			return this->ptr[position];
 		} else {
-			if (this->allocated_elements < -position)
-				throw;
+			if (this->allocated_elements <= -position)
+				throw out_of_range_error(
+				    "Accessing a value outside the allocated memory section.");
 
-			return this->ptr[this->allocated_elements - position];
+			return this->ptr[this->allocated_elements + position];
 		}
+	}
+	template<typename type>
+	type &scoped_pointer<type>::operator[](size_t position) const {
+		if (this->allocated_elements <= position)
+			throw out_of_range_error(
+			    "Accessing a value outside the allocated memory section.");
+
+		return this->ptr[position];
+	}
+	template<typename type>
+	type &scoped_pointer<type>::operator[](int32_t position) const {
+		return this->operator[](static_cast<ssize_t>(position));
+	}
+	template<typename type>
+	type &scoped_pointer<type>::operator[](uint32_t position) const {
+		return this->operator[](static_cast<size_t>(position));
 	}
 
 	template<typename type>

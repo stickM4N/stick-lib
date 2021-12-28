@@ -19,7 +19,7 @@ namespace stick {
 		size_t length = str_length(description);
 		this->description_cache = new_str(length + 26);
 		str_copy("Out-of-range error. ", 20, this->description_cache, false);
-		str_copy(description, length, &this->description_cache[15]);
+		str_copy(description, length, &this->description_cache[20]);
 	}
 	out_of_range_error::out_of_range_error(
 	    const out_of_range_error &error) noexcept {

@@ -16,7 +16,7 @@ namespace stick {
 
 
 	/**
-	 * Memory-managing error class.
+	 * Out-of-range error class.
 	 */
 	class out_of_range_error : public base_error {
 
@@ -35,7 +35,7 @@ namespace stick {
 
 		/**
 		 * Get the error description.
-		 * @return Description cstring.
+		 * @return Description string.
 		 */
 		const_cstring description() const noexcept override;
 	};

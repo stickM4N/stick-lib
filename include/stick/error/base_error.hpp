@@ -47,7 +47,7 @@ namespace stick {
 		/**
 		 * Get the error description. Mimic description for std::exception
 		 * compatibility.
-		 * @return Description cstring.
+		 * @return Description string.
 		 */
 		const_cstring what() const noexcept stick_STD_EXCEPTION_BASED_OVERRIDE_;
 	};

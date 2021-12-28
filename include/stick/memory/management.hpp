@@ -22,8 +22,7 @@ namespace stick {
 	 * @param [in] element_amount Number of elements to be allocated.
 	 * Default = 1.
 	 * @return Pointer to the newly allocated memory space.
-	 * @throw Throw when memory cannot be allocated.
-	 * @throws memory_error
+	 * @throw memory_error when memory cannot be allocated.
 	 */
 	template<typename type = byte_t>
 	inline type *allocate(size_t element_amount = 1ul);
@@ -33,8 +32,7 @@ namespace stick {
 	 * @tparam type Data type to allocate. Default = byte_t.
 	 * @param [in] value To be allocated dynamically.
 	 * @return Pointer to the newly allocated value.
-	 * @throw Throw when memory cannot be allocated.
-	 * @throws memory_error
+	 * @throw memory_error when memory cannot be allocated.
 	 */
 	template<typename type = byte_t>
 	inline type *allocate_value(const type &value);
@@ -47,8 +45,7 @@ namespace stick {
 	 * @param [in] element_amount Number of elements to be allocated.
 	 * Default = 1.
 	 * @return Pointer to the newly allocated memory space.
-	 * @throw Throw when memory cannot be allocated.
-	 * @throws memory_error
+	 * @throw memory_error when memory cannot be allocated.
 	 */
 	template<typename type = byte_t, size_t alignment = alignof(type)>
 	inline type *allocate_aligned(size_t element_amount = 1ul);
@@ -57,9 +54,8 @@ namespace stick {
 	 * Deallocate memory and make pointer null.
 	 * @tparam type Data type of the pointer to deallocate.
 	 * @param [in,out] data Pointer to deallocate and make null.
-	 * @throw Throw when memory cannot be deallocated or was previously
+	 * @throw memory_error when memory cannot be deallocated or was previously
 	 * deallocated.
-	 * @throws memory_error
 	 */
 	template<typename type>
 	inline void_t deallocate(type *&data);
@@ -106,8 +102,7 @@ namespace stick {
 	 * @param [in] destination_address Pointer to the data to be copied to.
 	 * @param [in] element_amount Number of consecutive data elements to be
 	 * copied from the source. Default = 1.
-	 * @throw Throw when destination data will overwrite source data.
-	 * @throws memory_error
+	 * @throw memory_error when destination data will overwrite source data.
 	 */
 	template<typename type = byte_t>
 	inline void_t copy(const type *source_address, type *destination_address,

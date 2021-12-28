@@ -121,9 +121,36 @@ namespace stick {
 		 * Get the value of the given position. Negative integers start from the
 		 * last allocated value.
 		 * @param [in] position Position of the value to return.
+		 * @throw out_of_range_error when accessing a value outside the
+		 * allocated memory space.
 		 * @return The value stored in the given position.
 		 */
-		type &operator[](ssize_t position);
+		type &operator[](ssize_t position) const;
+		/**
+		 * Get the value of the given position.
+		 * @param [in] position Position of the value to return.
+		 * @throw out_of_range_error when accessing a value outside the
+		 * allocated memory space.
+		 * @return The value stored in the given position.
+		 */
+		type &operator[](size_t position) const;
+		/**
+		 * Get the value of the given position. Negative integers start from the
+		 * last allocated value. Exists for typical values.
+		 * @param [in] position Position of the value to return.
+		 * @throw out_of_range_error when accessing a value outside the
+		 * allocated memory space.
+		 * @return The value stored in the given position.
+		 */
+		type &operator[](int32_t position) const;
+		/**
+		 * Get the value of the given position. Exists for typical values.
+		 * @param [in] position Position of the value to return.
+		 * @throw out_of_range_error when accessing a value outside the
+		 * allocated memory space.
+		 * @return The value stored in the given position.
+		 */
+		type &operator[](uint32_t position) const;
 
 		/**
 		 * Assign a new value to the pointed data.

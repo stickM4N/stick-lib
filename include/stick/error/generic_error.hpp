@@ -35,7 +35,7 @@ namespace stick {
 
 		/**
 		 * Get the error description.
-		 * @return Description cstring.
+		 * @return Description string.
 		 */
 		const_cstring description() const noexcept override;
 	};
