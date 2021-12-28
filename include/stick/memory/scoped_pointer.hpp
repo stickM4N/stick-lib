@@ -28,7 +28,7 @@ namespace stick {
 
 	public:
 		/**
-		 * Default constructor pointing to null;
+		 * Default constructor pointing to null.
 		 */
 		scoped_pointer() noexcept = default;
 		/**
@@ -76,6 +76,29 @@ namespace stick {
 
 
 		/**
+		 * Begin iterator.
+		 * @return Pointer to the first element.
+		 */
+		type *begin() const noexcept;
+		/**
+		 * End iterator.
+		 * @return Pointer to one element after the last.
+		 */
+		type *end() const noexcept;
+
+		/**
+		 * Reverse begin iterator.
+		 * @return Pointer to the last element.
+		 */
+		type *rbegin() const noexcept;
+		/**
+		 * Revere end iterator.
+		 * @return Pointer to one element before the first.
+		 */
+		type *rend() const noexcept;
+
+
+		/**
 		 * Get the amount of allocated elements.
 		 * @return Number of allocated elements.
 		 */
@@ -93,6 +116,14 @@ namespace stick {
 		 */
 		operator type *() const noexcept;
 
+
+		/**
+		 * Get the value of the given position. Negative integers start from the
+		 * last allocated value.
+		 * @param [in] position Position of the value to return.
+		 * @return The value stored in the given position.
+		 */
+		type &operator[](ssize_t position);
 
 		/**
 		 * Assign a new value to the pointed data.

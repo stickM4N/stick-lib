@@ -64,6 +64,25 @@ namespace stick {
 
 
 	template<typename type>
+	type *scoped_pointer<type>::begin() const noexcept {
+		return &this->ptr[0];
+	}
+	template<typename type>
+	type *scoped_pointer<type>::end() const noexcept {
+		return &this->ptr[this->allocated_elements];
+	}
+
+	template<typename type>
+	type *scoped_pointer<type>::rbegin() const noexcept {
+		return &this->ptr[this->allocated_elements - 1];
+	}
+	template<typename type>
+	type *scoped_pointer<type>::rend() const noexcept {
+		return &this->ptr[0] - 1;
+	}
+
+
+	template<typename type>
 	size_t scoped_pointer<type>::allocated_elems() const noexcept {
 		return this->allocated_elements;
 	}
@@ -78,6 +97,21 @@ namespace stick {
 		return this->ptr;
 	}
 
+
+	template<typename type>
+	type &scoped_pointer<type>::operator[](ssize_t position) {
+		if (position >= 0) {
+			if (this->allocated_elements < position)
+				throw;
+
+			return this->ptr[position];
+		} else {
+			if (this->allocated_elements < -position)
+				throw;
+
+			return this->ptr[this->allocated_elements - position];
+		}
+	}
 
 	template<typename type>
 	scoped_pointer<type> &
