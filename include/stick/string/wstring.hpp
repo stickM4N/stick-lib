@@ -29,18 +29,18 @@ namespace stick {
 		wstring() noexcept;
 		/**
 		 * Create a string with the given content and length.
-		 * @param [in] str Content of the string.
+		 * @param [in] string Content of the string.
 		 * @param [in] length Length of the string.
 		 * @param [in] pool_length Amount of reserved chars used on every string
 		 * expansion.
 		 */
-		wstring(const_wcstring str, size_t length,
+		wstring(const_wcstring string, size_t length,
 		        size_t pool_length = 0ul) noexcept;
 		/**
 		 * Create a string with the given content.
-		 * @param [in] str Content of the string.
+		 * @param [in] string Content of the string.
 		 */
-		wstring(const_wcstring str) noexcept;
+		wstring(const_wcstring string) noexcept;
 		/**
 		 * Create a string with repetitions of the same character.
 		 * @param [in] c Character to fill the string.
@@ -60,14 +60,14 @@ namespace stick {
 		explicit wstring(size_t length, size_t pool_length = 0ul) noexcept;
 		/**
 		 * Copy constructor.
-		 * @param [in] str String to copy from.
+		 * @param [in] string String to copy from.
 		 */
-		wstring(const wstring &str) noexcept = default;
+		wstring(const wstring &string) noexcept = default;
 		/**
 		 * Move constructor.
-		 * @param [in,out] str String to move from and clear.
+		 * @param [in,out] string String to move from and clear.
 		 */
-		wstring(wstring &&str) noexcept = default;
+		wstring(wstring &&string) noexcept = default;
 
 		/**
 		 * Default destructor.
@@ -106,19 +106,19 @@ namespace stick {
 
 		/**
 		 * Replace stored string with a new content.
-		 * @param [in] str Content of the new string.
+		 * @param [in] string Content of the new string.
 		 */
-		wstring &operator=(const_wcstring str) noexcept;
+		wstring &operator=(const_wcstring string) noexcept;
 		/**
 		 * Copy content from other string.
-		 * @param [in] str String to copy from.
+		 * @param [in] string String to copy from.
 		 */
-		wstring &operator=(const wstring &str) noexcept;
+		wstring &operator=(const wstring &string) noexcept = default;
 		/**
 		 * Move content from other string.
-		 * @param [in,out] str String to move from and clear.
+		 * @param [in,out] string String to move from and clear.
 		 */
-		wstring &operator=(wstring &&str) noexcept;
+		wstring &operator=(wstring &&string) noexcept;
 	};
 
 

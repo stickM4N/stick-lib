@@ -17,18 +17,17 @@ namespace stick {
 
 
 	string::string() noexcept : str(str_end) { }
-	string::string(const_cstring str, size_t length, size_t pool_length)
+	string::string(const_cstring string, size_t length, size_t pool_length)
 	    : str_size(length), pool_size(pool_length),
-	      str(str, length, pool_length + 1) {
-		this->str[this->str_size] = str_end;
+	      str(string, length, pool_length + 1) {
+		this->str[this->length()] = str_end;
 	}
-	string::string(const_cstring str) : string(str, str_length(str)) { }
-	string::string(const char_t c, size_t repetitions,
-	               size_t pool_length) noexcept
+	string::string(const_cstring string) : str(string, str_length(string)) { }
+	string::string(const char_t c, size_t repetitions, size_t pool_length)
 	    : str_size(repetitions), pool_size(pool_length),
 	      str(repetitions + pool_length + 1) {
-		set(this->str.operator char_t *(), c, this->str_size);
-		this->str[this->str_size] = str_end;
+		set(this->str.operator char_t *(), c, this->length());
+		this->str[this->length()] = str_end;
 	}
 	string::string(size_t length, size_t pool_length) noexcept
 	    : str_size(0ul), pool_size(pool_length), str(length + pool_length + 1) {
@@ -57,32 +56,25 @@ namespace stick {
 	}
 
 
-	string &string::operator=(const_cstring str) noexcept {
-		size_t length = str_length(str);
+	string &string::operator=(const_cstring string) noexcept {
+		size_t length = str_length(string);
 
-		if (length > this->str_size)
+		if (length > this->length())
 			this->str = scoped_pointer<char_t>(length + this->pool_size);
 
 
 		this->str_size = length;
-		str_copy(str, this->str_size, this->str);
+		str_copy(string, this->length(), this->str);
 
 		return *this;
 	}
-	string &string::operator=(const string &str) noexcept {
-		this->str_size = str.str_size;
-		this->pool_size = str.pool_size;
-		this->str = str.str;
+	string &string::operator=(string &&string) noexcept {
+		this->str_size = string.str_size;
+		this->pool_size = string.pool_size;
+		this->str = move(string.str);
 
-		return *this;
-	}
-	string &string::operator=(string &&str) noexcept {
-		this->str_size = str.str_size;
-		this->pool_size = str.pool_size;
-		this->str = move(str.str);
-
-		str.str_size = 0ul;
-		str.pool_size = 0ul;
+		string.str_size = 0ul;
+		string.pool_size = 0ul;
 
 		return *this;
 	}

@@ -59,32 +59,25 @@ namespace stick {
 	}
 
 
-	wstring &wstring::operator=(const_wcstring str) noexcept {
-		size_t length = wstr_length(str);
+	wstring &wstring::operator=(const_wcstring string) noexcept {
+		size_t length = wstr_length(string);
 
 		if (length > this->str_size)
 			this->str = scoped_pointer<wchar_t>(length + this->pool_size);
 
 
 		this->str_size = length;
-		wstr_copy(str, this->str_size, this->str);
+		wstr_copy(string, this->str_size, this->str);
 
 		return *this;
 	}
-	wstring &wstring::operator=(const wstring &str) noexcept {
-		this->str_size = str.str_size;
-		this->pool_size = str.pool_size;
-		this->str = str.str;
+	wstring &wstring::operator=(wstring &&string) noexcept {
+		this->str_size = string.str_size;
+		this->pool_size = string.pool_size;
+		this->str = move(string.str);
 
-		return *this;
-	}
-	wstring &wstring::operator=(wstring &&str) noexcept {
-		this->str_size = str.str_size;
-		this->pool_size = str.pool_size;
-		this->str = move(str.str);
-
-		str.str_size = 0ul;
-		str.pool_size = 0ul;
+		string.str_size = 0ul;
+		string.pool_size = 0ul;
 
 		return *this;
 	}

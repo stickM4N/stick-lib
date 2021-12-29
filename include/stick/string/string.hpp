@@ -29,19 +29,19 @@ namespace stick {
 		string() noexcept;
 		/**
 		 * Create a string with the given content and length.
-		 * @param [in] str Content of the string.
+		 * @param [in] string Content of the string.
 		 * @param [in] length Length of the string.
 		 * @param [in] pool_length Amount of reserved chars used on every string
 		 * expansion.
-		 * @throw memory_error when copying from a nullptr.
+		 * @throw memory_error when copying from a nullptr or pooling +2Gbytes.
 		 */
-		string(const_cstring str, size_t length, size_t pool_length = 0ul);
+		string(const_cstring string, size_t length, size_t pool_length = 0ul);
 		/**
 		 * Create a string with the given content.
-		 * @param [in] str Content of the string.
+		 * @param [in] string Content of the string.
 		 * @throw memory_error when copying from a nullptr.
 		 */
-		string(const_cstring str);
+		string(const_cstring string);
 		/**
 		 * Create a string with repetitions of the same character.
 		 * @param [in] c Character to fill the string.
@@ -49,9 +49,10 @@ namespace stick {
 		 * repeated.
 		 * @param [in] pool_length Amount of reserved chars used on every string
 		 * expansion.
+		 * @throw memory_error when pooling +2Gbytes.
 		 */
 		explicit string(char_t c, size_t repetitions = 1ul,
-		                size_t pool_length = 0ul) noexcept;
+		                size_t pool_length = 0ul);
 		/**
 		 * Create and empty string with reserved length.
 		 * @param [in] length Length to reserve for the string.
@@ -61,14 +62,14 @@ namespace stick {
 		explicit string(size_t length, size_t pool_length = 0ul) noexcept;
 		/**
 		 * Copy constructor.
-		 * @param [in] str String to copy from.
+		 * @param [in] string String to copy from.
 		 */
-		string(const string &str) noexcept = default;
+		string(const string &string) noexcept = default;
 		/**
 		 * Move constructor.
-		 * @param [in,out] str String to move from and clear.
+		 * @param [in,out] string String to move from and clear.
 		 */
-		string(string &&str) noexcept = default;
+		string(string &&string) noexcept = default;
 
 		/**
 		 * Default destructor.
@@ -107,19 +108,19 @@ namespace stick {
 
 		/**
 		 * Replace stored string with a new content.
-		 * @param [in] str Content of the new string.
+		 * @param [in] string Content of the new string.
 		 */
-		string &operator=(const_cstring str) noexcept;
+		string &operator=(const_cstring string) noexcept;
 		/**
 		 * Copy content from other string.
-		 * @param [in] str String to copy from.
+		 * @param [in] string String to copy from.
 		 */
-		string &operator=(const string &str) noexcept;
+		string &operator=(const string &string) noexcept = default;
 		/**
 		 * Move content from other string.
-		 * @param [in,out] str String to move from and clear.
+		 * @param [in,out] string String to move from and clear.
 		 */
-		string &operator=(string &&str) noexcept;
+		string &operator=(string &&string) noexcept;
 	};
 
 
