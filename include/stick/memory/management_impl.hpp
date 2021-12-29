@@ -89,7 +89,7 @@ namespace stick {
 	template<typename type>
 	inline void_t copy(const type *source_address, type *destination_address,
 	                   size_t element_amount) {
-		if (source_address == destination_address)
+		if (source_address == destination_address or element_amount == 0ul)
 			return;
 
 		if ((source_address < destination_address
@@ -105,27 +105,33 @@ namespace stick {
 
 	template<typename type>
 	inline void_t move(type *source_address, type *destination_address,
-	                   size_t element_amount) noexcept {
+	                   size_t element_amount, bool_t set_null) noexcept {
 
-		if (source_address == destination_address)
+		if (source_address == destination_address or element_amount == 0ul)
 			return;
 		else if (source_address < destination_address) {
 			for (size_t i = element_amount - 1; i < -1ul; i--)
 				set(&destination_address[i], source_address[i]);
 
-			if (source_address + element_amount >= destination_address)
-				clear(source_address, destination_address - source_address);
-			else
-				clear(source_address, element_amount);
+			if (set_null) {
+				if (source_address + element_amount >= destination_address)
+					clear(source_address + element_amount,
+					      destination_address - source_address);
+				else
+					clear(source_address, element_amount);
+			}
 
 		} else {   // destination_address < source_address
 			for (size_t i = 0ul; i < element_amount; i++)
 				set(&destination_address[i], source_address[i]);
 
-			if (destination_address + element_amount >= source_address)
-				clear(source_address, source_address - destination_address);
-			else
-				clear(source_address, element_amount);
+			if (set_null) {
+				if (destination_address + element_amount >= source_address)
+					clear(source_address + element_amount,
+					      source_address - destination_address);
+				else
+					clear(source_address, element_amount);
+			}
 		}
 	}
 

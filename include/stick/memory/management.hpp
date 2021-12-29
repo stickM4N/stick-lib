@@ -115,10 +115,12 @@ namespace stick {
 	 * @param [in] destination_address Pointer to the data to be moved to.
 	 * @param [in] element_amount Number of consecutive data elements to be
 	 * moved from the source. Default = 1.
+	 * @param [in] set_null Set memory to null when moved. Default = true.
 	 */
 	template<typename type = byte_t>
 	inline void_t move(type *source_address, type *destination_address,
-	                   size_t element_amount = 1ul) noexcept;
+	                   size_t element_amount = 1ul,
+	                   bool_t set_null = true) noexcept;
 
 
 }   // namespace stick
