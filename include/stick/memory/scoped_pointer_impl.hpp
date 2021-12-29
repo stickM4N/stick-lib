@@ -33,7 +33,7 @@ namespace stick {
 	                                     size_t extra_element_amount)
 	    : allocated_elements(element_amount + extra_element_amount),
 	      ptr(allocate<type>(element_amount + extra_element_amount)) {
-		if (this->is_null())
+		if (pointer == nullptr)
 			throw memory_error("Creating a scoped_pointer and trying to copy "
 			                   "values from a nullptr to it.");
 
