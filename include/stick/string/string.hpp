@@ -33,14 +33,15 @@ namespace stick {
 		 * @param [in] length Length of the string.
 		 * @param [in] pool_length Amount of reserved chars used on every string
 		 * expansion.
+		 * @throw memory_error when copying from a nullptr.
 		 */
-		string(const_cstring str, size_t length,
-		       size_t pool_length = 0ul) noexcept;
+		string(const_cstring str, size_t length, size_t pool_length = 0ul);
 		/**
 		 * Create a string with the given content.
 		 * @param [in] str Content of the string.
+		 * @throw memory_error when copying from a nullptr.
 		 */
-		string(const_cstring str) noexcept;
+		string(const_cstring str);
 		/**
 		 * Create a string with repetitions of the same character.
 		 * @param [in] c Character to fill the string.

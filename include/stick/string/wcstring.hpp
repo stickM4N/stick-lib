@@ -55,7 +55,7 @@ namespace stick {
 
 	/**
 	 * Compares two string contents.
-	 * @param [in] str_1 First string to campare.
+	 * @param [in] str_1 First string to compare.
 	 * @param [in] str_2 Second string to compare.
 	 * @param [in] length Length to compare in the strings.
 	 * @return True if the strings are identical, false otherwise.
@@ -64,7 +64,7 @@ namespace stick {
 	                  size_t length) noexcept;
 	/**
 	 * Compares two string contents.
-	 * @param [in] str_1 First string to campare.
+	 * @param [in] str_1 First string to compare.
 	 * @param [in] str_2 Second string to compare.
 	 * @return True if the strings are identical, false otherwise.
 	 */
@@ -74,7 +74,7 @@ namespace stick {
 	/**
 	 * Checks if the first string is sorted in relation to the second string
 	 * according to the ASCII code.
-	 * @param [in] str_1 First string to campare.
+	 * @param [in] str_1 First string to compare.
 	 * @param [in] str_2 Second string to compare.
 	 * @param [in] length Length to compare in the strings.
 	 * @return True if the first string is sorted ahead of the second, false
@@ -85,7 +85,7 @@ namespace stick {
 	/**
 	 * Checks if the first string is sorted in relation to the second string
 	 * according to the ASCII code.
-	 * @param [in] str_1 First string to campare.
+	 * @param [in] str_1 First string to compare.
 	 * @param [in] str_2 Second string to compare.
 	 * @return True if the first string is sorted ahead of the second, false
 	 * otherwise.

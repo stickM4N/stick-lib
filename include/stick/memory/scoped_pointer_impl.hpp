@@ -13,23 +13,34 @@
 
 namespace stick {
 
-
+	template<typename type>
+	scoped_pointer<type>::scoped_pointer() noexcept
+	    : ptr(nullptr), allocated_elements(0ul) { }
 	template<typename type>
 	scoped_pointer<type>::scoped_pointer(const type &value) noexcept
 	    : ptr(allocate_value(value)), allocated_elements(1ul) { }
 	template<typename type>
-	scoped_pointer<type>::scoped_pointer(const type *pointer) noexcept
-	    : ptr(const_cast<type *>(pointer)), allocated_elements(1ul) { }
+	scoped_pointer<type>::scoped_pointer(const type *pointer)
+	    : ptr(const_cast<type *>(pointer)), allocated_elements(1ul) {
+		if (this->is_null())
+			throw memory_error(
+			    "Creating a nullptr scoped_pointer from pointer, if this is "
+			    "what was meant use default constructor instead.");
+	}
 	template<typename type>
 	scoped_pointer<type>::scoped_pointer(const type *pointer,
 	                                     size_t element_amount,
-	                                     size_t extra_element_amount) noexcept
+	                                     size_t extra_element_amount)
 	    : allocated_elements(element_amount + extra_element_amount),
 	      ptr(allocate<type>(element_amount + extra_element_amount)) {
+		if (this->is_null())
+			throw memory_error("Creating a scoped_pointer and trying to copy "
+			                   "values from a nullptr to it.");
+
 		copy(pointer, this->ptr, element_amount);
 	}
 	template<typename type>
-	scoped_pointer<type>::scoped_pointer(size_t element_amount) noexcept
+	scoped_pointer<type>::scoped_pointer(size_t element_amount)
 	    : allocated_elements(element_amount),
 	      ptr(allocate<type>(element_amount)) { }
 	template<typename type>
@@ -83,6 +94,13 @@ namespace stick {
 	}
 
 
+
+	template<typename type>
+	bool_t scoped_pointer<type>::is_null() const noexcept {
+		return this->ptr == nullptr;
+	}
+
+
 	template<typename type>
 	scoped_pointer<type>::operator type *() const noexcept {
 		return this->ptr;
@@ -116,7 +134,7 @@ namespace stick {
 	template<typename type>
 	scoped_pointer<type> &
 	scoped_pointer<type>::operator=(const type &value) noexcept {
-		if (this->ptr == nullptr)
+		if (this->is_null())
 			this->ptr = allocate_value(value);
 		else
 			*this->ptr = value;

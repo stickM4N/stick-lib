@@ -22,19 +22,19 @@ namespace stick {
 	 * Allocates and initiates a new string.
 	 * @param [in] str Pointer to the string to be initiated with.
 	 * @param [in] length Length of the str.
-	 * @return A pointer to the newly allocated string.
+	 * @return Pointer to the newly allocated string.
 	 */
 	cstring new_str(const_cstring str, size_t length);
 	/**
 	 * Allocates and initiates a new string.
 	 * @param [in] str Pointer to the string to be initiated with.
-	 * @return A pointer to the newly allocated string.
+	 * @return Pointer to the newly allocated string.
 	 */
 	cstring new_str(const_cstring str);
 	/**
 	 * Allocates an empty string.
 	 * @param [in] length Length of the buffer the string should have.
-	 * @return A pointer to the newly allocated string.
+	 * @return Pointer to the newly allocated string.
 	 */
 	cstring new_str(size_t length);
 
@@ -55,7 +55,7 @@ namespace stick {
 
 	/**
 	 * Compares two string contents.
-	 * @param [in] str_1 First string to campare.
+	 * @param [in] str_1 First string to compare.
 	 * @param [in] str_2 Second string to compare.
 	 * @param [in] length Length to compare in the strings.
 	 * @return True if the strings are identical, false otherwise.
@@ -64,7 +64,7 @@ namespace stick {
 	                 size_t length) noexcept;
 	/**
 	 * Compares two string contents.
-	 * @param [in] str_1 First string to campare.
+	 * @param [in] str_1 First string to compare.
 	 * @param [in] str_2 Second string to compare.
 	 * @return True if the strings are identical, false otherwise.
 	 */
@@ -74,7 +74,7 @@ namespace stick {
 	/**
 	 * Checks if the first string is sorted in relation to the second string
 	 * according to the ASCII code.
-	 * @param [in] str_1 First string to campare.
+	 * @param [in] str_1 First string to compare.
 	 * @param [in] str_2 Second string to compare.
 	 * @param [in] length Length to compare in the strings.
 	 * @return True if the first string is sorted ahead of the second, false
@@ -85,7 +85,7 @@ namespace stick {
 	/**
 	 * Checks if the first string is sorted in relation to the second string
 	 * according to the ASCII code.
-	 * @param [in] str_1 First string to campare.
+	 * @param [in] str_1 First string to compare.
 	 * @param [in] str_2 Second string to compare.
 	 * @return True if the first string is sorted ahead of the second, false
 	 * otherwise.
@@ -153,7 +153,7 @@ namespace stick {
 	 * @param [in] wide_dict If characters pool is varied. Default = true.
 	 * @param [in] alphabet_size Max ASCII code of possible characters.
 	 * Default = 256 for full ASCII.
-	 * @return Return a pointer to an array of the positions where the pattern
+	 * @return Return Pointer to an array of the positions where the pattern
 	 * was found. The array ends with -1 value.
 	 */
 	const size_t *str_find(const_cstring text, size_t text_length,
@@ -171,7 +171,7 @@ namespace stick {
 	 * @param [in] wide_dict If characters pool is varied. Default = true.
 	 * @param [in] alphabet_size Max ASCII code of possible characters.
 	 * Default = 256 for full ASCII.
-	 * @return Return a pointer to an array of the positions where the pattern
+	 * @return Return Pointer to an array of the positions where the pattern
 	 * was found. The array ends with -1 value.
 	 */
 	const size_t *str_find(const_cstring text, const_cstring pattern,

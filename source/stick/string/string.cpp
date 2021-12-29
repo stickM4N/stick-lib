@@ -17,14 +17,12 @@ namespace stick {
 
 
 	string::string() noexcept : str(str_end) { }
-	string::string(const_cstring str, size_t length,
-	               size_t pool_length) noexcept
+	string::string(const_cstring str, size_t length, size_t pool_length)
 	    : str_size(length), pool_size(pool_length),
 	      str(str, length, pool_length + 1) {
 		this->str[this->str_size] = str_end;
 	}
-	string::string(const_cstring str) noexcept
-	    : string(str, str_length(str)) { }
+	string::string(const_cstring str) : string(str, str_length(str)) { }
 	string::string(const char_t c, size_t repetitions,
 	               size_t pool_length) noexcept
 	    : str_size(repetitions), pool_size(pool_length),

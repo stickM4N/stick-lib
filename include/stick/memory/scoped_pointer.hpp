@@ -23,14 +23,14 @@ namespace stick {
 	template<typename type>
 	class scoped_pointer {
 
-		type *ptr = nullptr;
-		size_t allocated_elements = 0ul;
+		type *ptr;
+		size_t allocated_elements;
 
 	public:
 		/**
 		 * Default constructor pointing to null.
 		 */
-		scoped_pointer() noexcept = default;
+		scoped_pointer() noexcept;
 		/**
 		 * Allocate pointer to new address with the given value.
 		 * @param [in] value Value to be copied to the new address.
@@ -40,23 +40,26 @@ namespace stick {
 		 * Convert pointer to single value to scoped_pointer. Pointer will be
 		 * deallocated when scoped_pointer is called!
 		 * @param [in] pointer Address of the value to be pointed.
+		 * @throw memory_error when copying a nullptr.
 		 * @return Self instance.
 		 */
-		scoped_pointer(const type *pointer) noexcept;
+		scoped_pointer(const type *pointer);
 		/**
 		 * Allocate a copy of the value(s) referenced by the given pointer.
 		 * @param [in] pointer Address of the values to be copied.
 		 * @param [in] element_amount Number of consecutive values to be copied.
 		 * @param [in] extra_element_amount Number extra elements to be
 		 * allocated. Default = 0.
+		 * @throw memory_error when copying from a nullptr or allocating 0 byte.
 		 */
 		explicit scoped_pointer(const type *pointer, size_t element_amount,
-		                        size_t extra_element_amount = 0ul) noexcept;
+		                        size_t extra_element_amount = 0ul);
 		/**
 		 * Allocate elements without assigning any value.
 		 * @param [in] element_amount Number of elements to allocate.
+		 * @throw memory_error when allocating 0 byte.
 		 */
-		explicit scoped_pointer(size_t element_amount) noexcept;
+		explicit scoped_pointer(size_t element_amount);
 		/**
 		 * Copy constructor. Copy all data pointed by the target scoped_pointer.
 		 * @param [in] pointer Target pointer to copy.
@@ -108,6 +111,12 @@ namespace stick {
 		 * @return Number of allocated bytes.
 		 */
 		size_t allocated_bytes() const noexcept;
+
+		/**
+		 * Check if is nullptr.
+		 * @return True if is nullptr, false otherwise.
+		 */
+		bool_t is_null() const noexcept;
 
 
 		/**
