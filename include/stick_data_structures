@@ -1,0 +1,6 @@
+/**
+ * Include all data-structure headers.
+ * @author Julio C. Galindo (stickM4N)
+ * @file stick_data_structures
+ */
+#include "stick/data_structures/array.hpp"
