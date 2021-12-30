@@ -72,9 +72,9 @@ namespace stick {
 		string(string &&string) noexcept = default;
 
 		/**
-		 * Default destructor.
+		 * Reset the string to its bare state.
 		 */
-		~string() = default;
+		~string() noexcept;
 
 
 		/**

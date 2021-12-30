@@ -37,6 +37,12 @@ namespace stick {
 		this->str[0] = str_end;
 	}
 
+	wstring::~wstring() noexcept {
+		this->str = allocate_value(wstr_end);
+		this->str_size = 0ul;
+		this->pool_size = 0ul;
+	}
+
 
 	const_wcstring wstring::data() const noexcept {
 		return this->str;

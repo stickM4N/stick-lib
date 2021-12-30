@@ -34,6 +34,12 @@ namespace stick {
 		this->str[0] = str_end;
 	}
 
+	string::~string() noexcept {
+		this->str = allocate_value(str_end);
+		this->str_size = 0ul;
+		this->pool_size = 0ul;
+	}
+
 
 	const_cstring string::data() const noexcept {
 		return this->str;

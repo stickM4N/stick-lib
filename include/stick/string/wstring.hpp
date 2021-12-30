@@ -70,9 +70,9 @@ namespace stick {
 		wstring(wstring &&string) noexcept = default;
 
 		/**
-		 * Default destructor.
+		 * Reset the string to its bare state.
 		 */
-		~wstring() = default;
+		~wstring() noexcept;
 
 
 		/**
