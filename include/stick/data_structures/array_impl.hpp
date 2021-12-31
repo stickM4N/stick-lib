@@ -76,7 +76,8 @@ namespace stick {
 	template<typename type>
 	array<type>::array(size_t size, size_t front_pool_length,
 	                   size_t back_pool_length)
-	    : data(front_pool_length + size + back_pool_length),
+	    : data(allocate<type>(front_pool_length + size + back_pool_length),
+	           front_pool_length + size + back_pool_length),
 	      front_pool(front_pool_length), back_pool(back_pool_length),
 	      data_start(front_pool_length) { }
 	template<typename type>
