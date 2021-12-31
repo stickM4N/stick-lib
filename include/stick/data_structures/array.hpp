@@ -138,7 +138,7 @@ namespace stick {
 		 */
 		type *rbegin() const noexcept;
 		/**
-		 * Revere end iterator.
+		 * Reverse end iterator.
 		 * @return Pointer to one element before the first.
 		 */
 		type *rend() const noexcept;

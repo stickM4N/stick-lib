@@ -192,6 +192,9 @@ namespace stick {
 	template<typename type>
 	array<type> &array<type>::compact(size_t front_size,
 	                                  size_t back_size) noexcept {
+		if (this->size() == this->allocated_size())
+			return *this;
+
 		if (this->available_front_pool() <= front_size)
 			front_size = 0ul;
 		else
