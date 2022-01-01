@@ -41,17 +41,17 @@ namespace stick {
 
 
 	char_t *string::begin() const noexcept {
-		return &this->data[0ul];
+		return this->data;
 	}
 	char_t *string::end() const noexcept {
-		return &this->data[this->length()];
+		return this->data + this->length();
 	}
 
 	char_t *string::rbegin() const noexcept {
-		return &this->data[this->length() - 1ul];
+		return this->end() - 1ul;
 	}
 	char_t *string::rend() const noexcept {
-		return &this->data[0ul] - 1ul;
+		return this->begin() - 1ul;
 	}
 
 
@@ -113,7 +113,7 @@ namespace stick {
 		if (this->available_pool() < length)
 			this->expand(this->available_pool() - length + this->pool);
 
-		str_copy(str, length, &this->data[length]);
+		str_copy(str, length, this->end());
 		this->data_size += length;
 
 		return *this;
@@ -315,6 +315,8 @@ namespace stick {
 		if (matches.empty())
 			return *this;
 
+		matches.push_back(this->length());
+
 		if (pattern_length < replacement_length
 		    and this->available_pool()
 		            < matches.size() * (replacement_length - pattern_length)) {
@@ -327,16 +329,13 @@ namespace stick {
 			for (size_t i = 0ul; i < matches.size() - 1ul; i++) {
 				tempy.append(replacement, replacement_length);
 				tempy.append(&this->data[matches[i] + pattern_length],
-				             matches[i + 1ul] - matches[i]);
+				             matches[i + 1ul] - matches[i] - pattern_length);
 			}
-			tempy.append(&this->data[matches[-1l]],
-			             this->length() - matches[-1l]);
 
 			*this = move(tempy);
 
 		} else {
 
-			matches.push_back(this->length());
 			if (replacement_length < pattern_length) {
 				for (size_t i = 0ul, offset; i < matches.size() - 1ul; i++) {
 					offset = i * (pattern_length - replacement_length);

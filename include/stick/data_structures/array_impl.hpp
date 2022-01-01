@@ -109,22 +109,16 @@ namespace stick {
 	}
 	template<typename type>
 	type *array<type>::end() const noexcept {
-		if (this->empty())
-			return this->begin();
-		else
-			return &this->data[this->last_position()] + 1ul;
+		return this->begin() + this->size();
 	}
 
 	template<typename type>
 	type *array<type>::rbegin() const noexcept {
-		if (this->empty())
-			return this->rend();
-		else
-			return &this->data[this->last_position()];
+		return this->end() - 1ul;
 	}
 	template<typename type>
 	type *array<type>::rend() const noexcept {
-		return &this->data[this->first_position()] - 1ul;
+		return this->begin() - 1ul;
 	}
 
 

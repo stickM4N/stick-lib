@@ -67,20 +67,20 @@ namespace stick {
 
 	template<typename type>
 	type *scoped_pointer<type>::begin() const noexcept {
-		return &this->ptr[0];
+		return this->ptr;
 	}
 	template<typename type>
 	type *scoped_pointer<type>::end() const noexcept {
-		return &this->ptr[this->allocated_elements];
+		return this->ptr + this->allocated_elements;
 	}
 
 	template<typename type>
 	type *scoped_pointer<type>::rbegin() const noexcept {
-		return &this->ptr[this->allocated_elements - 1];
+		return this->end() - 1ul;
 	}
 	template<typename type>
 	type *scoped_pointer<type>::rend() const noexcept {
-		return &this->ptr[0] - 1;
+		return this->begin() - 1ul;
 	}
 
 
