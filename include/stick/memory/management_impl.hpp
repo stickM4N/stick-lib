@@ -30,7 +30,7 @@ namespace stick {
 
 	template<typename type>
 	inline type *allocate_value(const type &value) {
-		auto ptr = allocate<type>(1);
+		auto ptr = allocate<type>(1ul);
 		*ptr = value;
 
 		return ptr;

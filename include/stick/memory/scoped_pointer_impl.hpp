@@ -40,7 +40,7 @@ namespace stick {
 		copy(pointer, this->ptr, element_amount);
 	}
 	template<typename type>
-	scoped_pointer<type>::scoped_pointer(size_t element_amount)
+	scoped_pointer<type>::scoped_pointer(size_t element_amount, nullptr_t)
 	    : allocated_elements(element_amount),
 	      ptr(allocate<type>(element_amount)) { }
 	template<typename type>
@@ -148,6 +148,7 @@ namespace stick {
 			deallocate(this->ptr);
 
 		this->ptr = const_cast<type *>(pointer);
+		this->allocated_elements = 1ul;
 
 		return *this;
 	}

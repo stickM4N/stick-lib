@@ -57,9 +57,11 @@ namespace stick {
 		/**
 		 * Allocate elements without assigning any value.
 		 * @param [in] element_amount Number of elements to allocate.
+		 * @param [in] _ Only use to enforce this constructor when type is
+		 * size_t.
 		 * @throw memory_error when allocating 0 byte.
 		 */
-		explicit scoped_pointer(size_t element_amount);
+		explicit scoped_pointer(size_t element_amount, nullptr_t _ = nullptr);
 		/**
 		 * Copy constructor. Copy all data pointed by the target scoped_pointer.
 		 * @param [in] pointer Target pointer to copy.

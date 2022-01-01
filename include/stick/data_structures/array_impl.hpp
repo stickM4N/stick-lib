@@ -76,10 +76,9 @@ namespace stick {
 	template<typename type>
 	array<type>::array(size_t size, size_t front_pool_length,
 	                   size_t back_pool_length)
-	    : data(allocate<type>(front_pool_length + size + back_pool_length),
-	           front_pool_length + size + back_pool_length),
+	    : data(front_pool_length + size + back_pool_length, nullptr),
 	      front_pool(front_pool_length), back_pool(back_pool_length),
-	      data_start(front_pool_length) { }
+	      data_start(front_pool_length), data_size(0ul) { }
 	template<typename type>
 	array<type>::array(array &&array) noexcept {
 		this->data = move(array.data);
@@ -113,7 +112,7 @@ namespace stick {
 		if (this->empty())
 			return this->begin();
 		else
-			return &this->data[this->last_position()];
+			return &this->data[this->last_position()] + 1ul;
 	}
 
 	template<typename type>
@@ -144,7 +143,7 @@ namespace stick {
 	}
 	template<typename type>
 	size_t array<type>::available_back_pool() const noexcept {
-		return this->allocated_size() - this->last_position();
+		return this->allocated_size() - this->last_position() - 1ul;
 	}
 
 	template<typename type>
@@ -329,7 +328,7 @@ namespace stick {
 	}
 	template<typename type>
 	array<type> &array<type>::pop_back() {
-		return this->pop(-1ul);
+		return this->pop(-1l);
 	}
 
 
