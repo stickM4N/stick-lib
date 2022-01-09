@@ -17,6 +17,9 @@
 namespace stick {
 
 
+	/**
+	 * String class to easily manage char arrays.
+	 */
 	class string {
 
 		scoped_pointer<char_t> data;

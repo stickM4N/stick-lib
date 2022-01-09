@@ -86,7 +86,7 @@ IncludeCategories:
     CaseSensitive: false
 IncludeIsMainRegex: ''
 IncludeIsMainSourceRegex: ''
-IndentCaseBlocks: true
+IndentCaseBlocks: false
 IndentCaseLabels: false
 IndentExternBlock: Indent
 IndentGotoLabels: false

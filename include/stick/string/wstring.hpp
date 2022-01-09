@@ -17,6 +17,9 @@
 namespace stick {
 
 
+	/**
+	 * String class to easily manage char arrays.
+	 */
 	class wstring {
 
 		scoped_pointer<wchar_t> data;
