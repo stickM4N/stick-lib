@@ -4,3 +4,4 @@
  * @file stick_data_structures
  */
 #include "stick/data_structures/array.hpp"
+#include "stick/data_structures/pair.hpp"

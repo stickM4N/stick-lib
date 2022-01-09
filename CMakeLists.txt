@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.21 FATAL_ERROR)
 
 
 project("stick::lib"
-        VERSION 0.0.3.97
+        VERSION 0.0.4.0
         DESCRIPTION "Full and cross-platform implementation of many libraries without any dependencies."
         HOMEPAGE_URL "https://github.com/stickM4N/stick-lib"
         LANGUAGES CXX)
@@ -22,6 +22,8 @@ add_library("lib" STATIC
         #   data_structures
         "include/stick/data_structures/array.hpp"
         "include/stick/data_structures/array_impl.hpp"
+        "include/stick/data_structures/pair.hpp"
+        "include/stick/data_structures/pair_impl.hpp"
         #   defines
         "include/stick/defines/arch.hpp"
         "include/stick/defines/compiler.hpp"
