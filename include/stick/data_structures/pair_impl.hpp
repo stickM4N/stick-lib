@@ -8,6 +8,7 @@
 
 
 #	include "../memory/management.hpp"
+#	include "../templates/reference.hpp"
 
 
 namespace stick {
@@ -22,7 +23,8 @@ namespace stick {
 	    : first_value(pair.first_value), second_value(pair.second_value) { }
 	template<typename first_type, typename second_type>
 	pair<first_type, second_type>::pair(pair &&pair) noexcept
-	    : first_value(pair.first_value), second_value(pair.second_value) {
+	    : first_value(move(pair.first_value)),
+	      second_value(move(pair.second_value)) {
 		pair.~pair();
 	}
 
@@ -34,11 +36,11 @@ namespace stick {
 
 
 	template<typename first_type, typename second_type>
-	first_type &pair<first_type, second_type>::first() const noexcept {
+	first_type &pair<first_type, second_type>::first() noexcept {
 		return this->first_value;
 	}
 	template<typename first_type, typename second_type>
-	second_type &pair<first_type, second_type>::second() const noexcept {
+	second_type &pair<first_type, second_type>::second() noexcept {
 		return this->second_value;
 	}
 
@@ -54,8 +56,8 @@ namespace stick {
 	template<typename first_type, typename second_type>
 	pair<first_type, second_type> &
 	pair<first_type, second_type>::operator=(pair &&pair) noexcept {
-		this->first_value = pair.first_value;
-		this->second_value = pair.second_value;
+		this->first_value = move(pair.first_value);
+		this->second_value = move(pair.second_value);
 
 		pair.~pair();
 

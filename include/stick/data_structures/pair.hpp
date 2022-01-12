@@ -58,12 +58,12 @@ namespace stick {
 		 * Get the first value.
 		 * @return First stored lvalue.
 		 */
-		first_type &first() const noexcept;
+		first_type &first() noexcept;
 		/**
 		 * Get the second value.
 		 * @return Second stored lvalue.
 		 */
-		second_type &second() const noexcept;
+		second_type &second() noexcept;
 
 
 		/**
