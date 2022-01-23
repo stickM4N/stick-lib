@@ -22,6 +22,7 @@ add_library("lib" STATIC
         #   data_structures
         "include/stick/data_structures/array.hpp"
         "include/stick/data_structures/array_impl.hpp"
+        "include/stick/data_structures/list_constexpr.hpp"
         "include/stick/data_structures/pair.hpp"
         "include/stick/data_structures/pair_impl.hpp"
         #   defines

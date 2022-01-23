@@ -74,6 +74,11 @@ namespace stick {
 	array<type>::array(const type *array, size_t length)
 	    : data(array, length), data_size(length) { }
 	template<typename type>
+	array<type>::array(const list_constexpr<type> &array) : data(array.size()) {
+		for (const auto &e : array)
+			this->push_back(e);
+	}
+	template<typename type>
 	array<type>::array(size_t size, size_t front_pool_length,
 	                   size_t back_pool_length)
 	    : data(front_pool_length + size + back_pool_length, nullptr),
@@ -329,6 +334,7 @@ namespace stick {
 	template<typename type>
 	array<type> &array<type>::clear() noexcept {
 		this->data_size = 0ul;
+		this->data_start = 0ul;
 
 		return *this;
 	}
@@ -357,6 +363,18 @@ namespace stick {
 		return this->operator[](static_cast<size_t>(position));
 	}
 
+	template<typename type>
+	array<type> &
+	array<type>::operator=(const list_constexpr<type> &list) noexcept {
+		if (this->allocated_size() < list.size())
+			this->expand_back(list.size() - this->allocated_size());
+
+		this->clear();
+		for (const auto &e : list)
+			this->push_back(e);
+
+		return *this;
+	}
 	template<typename type>
 	array<type> &array<type>::operator=(array &&array) noexcept {
 		this->data = move(array.data);

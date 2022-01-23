@@ -13,9 +13,7 @@
 
 namespace stick {
 
-	template<typename type>
-	scoped_pointer<type>::scoped_pointer() noexcept
-	    : ptr(nullptr), allocated_elements(0ul) { }
+
 	template<typename type>
 	scoped_pointer<type>::scoped_pointer(const type &value) noexcept
 	    : ptr(allocate_value(value)), allocated_elements(1ul) { }
@@ -38,6 +36,13 @@ namespace stick {
 			                   "values from a nullptr to it.");
 
 		copy(pointer, this->ptr, element_amount);
+	}
+	template<typename type>
+	scoped_pointer<type>::scoped_pointer(
+	    const list_constexpr<type> &list) noexcept
+	    : ptr(allocate<type>(list.size())) {
+		for (const auto &e : list)
+			this->ptr[this->allocated_elements++] = e;
 	}
 	template<typename type>
 	scoped_pointer<type>::scoped_pointer(size_t element_amount, nullptr_t)
@@ -151,6 +156,15 @@ namespace stick {
 		this->allocated_elements = 1ul;
 
 		return *this;
+	}
+	template<typename type>
+	scoped_pointer<type> &
+	scoped_pointer<type>::operator=(const list_constexpr<type> &list) noexcept {
+		this->~scoped_pointer();
+
+		this->ptr = allocate(list.size());
+		for (const auto &e : list)
+			this->ptr[this->allocated_elements++] = e;
 	}
 	template<typename type>
 	scoped_pointer<type> &

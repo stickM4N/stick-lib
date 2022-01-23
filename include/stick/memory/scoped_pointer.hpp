@@ -10,6 +10,7 @@
 
 
 
+#	include "../data_structures/list_constexpr.hpp"
 #	include "../defines/types.hpp"
 
 
@@ -23,14 +24,14 @@ namespace stick {
 	template<typename type>
 	class scoped_pointer {
 
-		type *ptr;
-		size_t allocated_elements;
+		type *ptr = nullptr;
+		size_t allocated_elements = 0ul;
 
 	public:
 		/**
 		 * Default constructor pointing to null.
 		 */
-		scoped_pointer() noexcept;
+		scoped_pointer() noexcept = default;
 		/**
 		 * Allocate pointer to new address with the given value.
 		 * @param [in] value Value to be copied to the new address.
@@ -54,6 +55,12 @@ namespace stick {
 		 */
 		explicit scoped_pointer(const type *pointer, size_t element_amount,
 		                        size_t extra_element_amount = 0ul);
+		/**
+		 * Allocate the values stored in the list initializer.
+		 * @param [in] list Values to allocate.
+		 * @throw memory_error when the list is empty.
+		 */
+		scoped_pointer(const list_constexpr<type> &list) noexcept;
 		/**
 		 * Allocate elements without assigning any value.
 		 * @param [in] element_amount Number of elements to allocate.
@@ -182,6 +189,12 @@ namespace stick {
 		 * @return Self instance.
 		 */
 		scoped_pointer &operator=(const scoped_pointer &pointer) noexcept;
+		/**
+		 * Delete allocated data and allocate the values in the list.
+		 * @param [in] list List of vales to allocate.
+		 * @return Self instance.
+		 */
+		scoped_pointer &operator=(const list_constexpr<type> &list) noexcept;
 		/**
 		 * Move data from another pointer and clear it.
 		 * @param [in,out] pointer Scoped_pointer to be moved and cleared.

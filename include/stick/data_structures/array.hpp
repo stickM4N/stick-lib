@@ -10,6 +10,7 @@
 
 
 
+#	include "../data_structures/list_constexpr.hpp"
 #	include "../defines/types.hpp"
 #	include "../memory/scoped_pointer.hpp"
 
@@ -92,6 +93,12 @@ namespace stick {
 		 * @throw memory_error when copying from a nullptr.
 		 */
 		explicit array(const type *array, size_t length);
+		/**
+		 * Create an array copying from a constexpr list.
+		 * @param [in] array Constant list to initialize the array.
+		 * @throw memory_error when array is empty.
+		 */
+		array(const list_constexpr<type> &array);
 		/**
 		 * Create an empty array with reserved space.
 		 * @param [in] size Number of elements to reserve space for.
@@ -370,6 +377,11 @@ namespace stick {
 		 */
 		type &operator[](uint32_t position) const;
 
+		/**
+		 * Replace an array copying from a constexpr list.
+		 * @param [in] list Constant list to replace the array.
+		 */
+		array &operator=(const list_constexpr<type> &list) noexcept;
 		/**
 		 * Default copy initializer.
 		 * @param [in] array Array to copy from.
