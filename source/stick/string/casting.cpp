@@ -1,7 +1,7 @@
 /**
  * Convert strings to other data types implementation.
  * @brief String casting implementation.
- * @file cstring.cpp
+ * @file casting.cpp
  * @author Julio C. Galindo (stickM4N)
  */
 #include "../../../include/stick/string/casting.hpp"

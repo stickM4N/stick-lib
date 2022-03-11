@@ -1,7 +1,7 @@
 /**
  * Cast error. Implementation.
  * @brief Cast error implementation.
- * @file memory_error.cpp
+ * @file cast_error.cpp
  * @author Julio C. Galindo (stickM4N)
  */
 #include "../../../include/stick/error/cast_error.hpp"

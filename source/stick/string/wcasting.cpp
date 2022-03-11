@@ -1,7 +1,7 @@
 /**
  * Convert wide strings to other data types implementation.
  * @brief Wide string casting implementation.
- * @file wcstring.cpp
+ * @file wcasting.cpp
  * @author Julio C. Galindo (stickM4N)
  */
 #include "../../../include/stick/string/wcasting.hpp"
