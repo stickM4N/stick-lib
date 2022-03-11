@@ -50,7 +50,7 @@ namespace stick {
 	    || defined(__X86__) || defined(_M_IX86) || defined(__THW_INTEL__)      \
 	    || defined(__x86_64) || defined(__x86_64__) || defined(__amd64)        \
 	    || defined(__amd64__) || defined(_M_AMD64) || defined(_M_X64)          \
-	    || defined(__ia64) || defined(_IA64) || defined(__IA64__) ||           \
+	    || defined(__ia64) || defined(_IA64) || defined(__IA64__)              \
 	    || defined(__ia64__) || defined(_M_IA64) || defined(__itanium__)       \
 	    || defined(__ARMEL__) || defined(__THUMBEL__)                          \
 	    || defined(__AARCH64EL__) || defined(__alpha) || defined(__alpha__)    \

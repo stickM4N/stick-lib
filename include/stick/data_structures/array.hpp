@@ -295,7 +295,6 @@ namespace stick {
 
 		/**
 		 * Remove the value located a given position in the array.
-		 * @param [in] value Value to be removed.
 		 * @param [in] position Position in which the value will be removed.
 		 * @throw out_of_range_error when removing at an invalid position.
 		 * @return Self instance.
@@ -303,7 +302,6 @@ namespace stick {
 		array &pop(ssize_t position);
 		/**
 		 * Remove the value located a given position in the array.
-		 * @param [in] value Value to be removed.
 		 * @param [in] position Position in which the value will be removed.
 		 * @throw out_of_range_error when removing at an invalid position.
 		 * @return Self instance.
@@ -311,7 +309,6 @@ namespace stick {
 		array &pop(size_t position);
 		/**
 		 * Remove the value located a given position in the array.
-		 * @param [in] value Value to be removed.
 		 * @param [in] position Position in which the value will be removed.
 		 * @throw out_of_range_error when removing at an invalid position.
 		 * @return Self instance.
@@ -319,7 +316,6 @@ namespace stick {
 		array &pop(int32_t position);
 		/**
 		 * Remove the value located a given position in the array.
-		 * @param [in] value Value to be removed.
 		 * @param [in] position Position in which the value will be removed.
 		 * @throw out_of_range_error when removing at an invalid position.
 		 * @return Self instance.

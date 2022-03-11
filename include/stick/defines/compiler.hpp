@@ -40,6 +40,8 @@ namespace stick {
 		                           ///< C/C++.
 #	define stick_COMPILER_SUNPRO                                              \
 		"Oracle Solaris Studio"   ///< Compiler name for Oracle Solaris Studio.
+#	define stick_COMPILER_UNKNOWN                                             \
+		"compiler_unknown"   ///< Compiler name for unknown.
 
 
 /* ____________________ Clang ____________________ */
@@ -97,6 +99,10 @@ namespace stick {
 					                        (__SUNPRO_C & 0xF))
 #			endif
 #		endif
+
+/* ____________________ unknown ____________________ */
+#	else
+#		define stick_COMPILER stick_COMPILER_UNKNOWN
 
 #	endif
 

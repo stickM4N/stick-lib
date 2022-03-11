@@ -22,14 +22,14 @@ namespace stick {
 	 * Allocates and initiates a new string.
 	 * @param [in] str Pointer to the string to be initiated with.
 	 * @param [in] length Length of the string.
-	 * @thow memory_error when data is nullptr.
+	 * @throw memory_error when data is nullptr.
 	 * @return Pointer to the newly allocated string.
 	 */
 	wcstring new_wstr(const_wcstring str, size_t length);
 	/**
 	 * Allocates and initiates a new string.
 	 * @param [in] str Pointer to the string to be initiated with.
-	 * @thow memory_error when data is nullptr.
+	 * @throw memory_error when data is nullptr.
 	 * @return Pointer to the newly allocated string.
 	 */
 	wcstring new_wstr(const_wcstring str);
@@ -43,7 +43,7 @@ namespace stick {
 	/**
 	 * Deletes and deallocates a string.
 	 * @param [in,out] str Pointer to the string to be deleted.
-	 * @thow memory_error when data is nullptr.
+	 * @throw memory_error when data is nullptr.
 	 */
 	void delete_wstr(wcstring &str);
 
@@ -51,7 +51,7 @@ namespace stick {
 	/**
 	 * Return the length of a string.
 	 * @param [in] str The string to determine the length of.
-	 * @thow memory_error when data is nullptr.
+	 * @throw memory_error when data is nullptr.
 	 * @return The size of the string.
 	 */
 	size_t wstr_length(const_wcstring str);
@@ -62,7 +62,7 @@ namespace stick {
 	 * @param [in] str_1 First string to compare.
 	 * @param [in] str_2 Second string to compare.
 	 * @param [in] length Length to compare in the strings.
-	 * @thow memory_error when any data is nullptr.
+	 * @throw memory_error when any data is nullptr.
 	 * @return True if the strings are identical, false otherwise.
 	 */
 	bool_t wstr_equal(const_wcstring str_1, const_wcstring str_2,
@@ -71,7 +71,7 @@ namespace stick {
 	 * Compares two string contents.
 	 * @param [in] str_1 First string to compare.
 	 * @param [in] str_2 Second string to compare.
-	 * @thow memory_error when any data is nullptr.
+	 * @throw memory_error when any data is nullptr.
 	 * @return True if the strings are identical, false otherwise.
 	 */
 	bool_t wstr_equal(const_wcstring str_1, const_wcstring str_2);
@@ -83,7 +83,7 @@ namespace stick {
 	 * @param [in] str_1 First string to compare.
 	 * @param [in] str_2 Second string to compare.
 	 * @param [in] length Length to compare in the strings.
-	 * @thow memory_error when any data is nullptr.
+	 * @throw memory_error when any data is nullptr.
 	 * @return True if the first string is sorted ahead of the second, false
 	 * otherwise.
 	 */
@@ -94,7 +94,7 @@ namespace stick {
 	 * according to the ASCII code.
 	 * @param [in] str_1 First string to compare.
 	 * @param [in] str_2 Second string to compare.
-	 * @thow memory_error when any data is nullptr.
+	 * @throw memory_error when any data is nullptr.
 	 * @return True if the first string is sorted ahead of the second, false
 	 * otherwise.
 	 */
@@ -112,14 +112,14 @@ namespace stick {
 	 * Checks if the string is made by numeric characters.
 	 * @param str The string to be checked.
 	 * @param length The length of the string to be checked.
-	 * @thow memory_error when data is nullptr.
+	 * @throw memory_error when data is nullptr.
 	 * @return True if all chars in the string are numbers, false otherwise.
 	 */
 	bool_t wstr_is_numeric(const_wcstring str, size_t length);
 	/**
 	 * Checks if the string is made by numeric characters.
 	 * @param str The string to be checked.
-	 * @thow memory_error when data is nullptr.
+	 * @throw memory_error when data is nullptr.
 	 * @return True if all chars in the string are numbers, false otherwise.
 	 */
 	bool_t wstr_is_numeric(const_wcstring str);
@@ -133,7 +133,7 @@ namespace stick {
 	 * copy to.
 	 * @param [in] set_end Set null character at the end of the copied string.
 	 * Default = true.
-	 * @thow memory_error when copying to/from a nullptr.
+	 * @throw memory_error when copying to/from a nullptr.
 	 * @return Pointer to the updated destination string.
 	 */
 	wcstring wstr_copy(const_wcstring source_str, size_t length,
@@ -145,7 +145,7 @@ namespace stick {
 	 * copy to.
 	 * @param [in] set_end Set null character at the end of the copied string.
 	 * Default = true.
-	 * @thow memory_error when copying to/from a nullptr.
+	 * @throw memory_error when copying to/from a nullptr.
 	 * @return Pointer to the updated destination string.
 	 */
 	wcstring wstr_copy(const_wcstring source_str, wcstring destination_str,
@@ -160,7 +160,7 @@ namespace stick {
 	 * @param [in] set_end Set null character at the end of the moved string.
 	 * Default = true.
 	 * @param [in] clear_str Set source data to empty. Default = true.
-	 * @thow memory_error when moving to/from a nullptr.
+	 * @throw memory_error when moving to/from a nullptr.
 	 * @return Pointer to the updated destination string.
 	 */
 	wcstring wstr_move(wcstring source_str, size_t length,
@@ -174,7 +174,7 @@ namespace stick {
 	 * @param [in] set_end Set null character at the end of the moved string.
 	 * Default = true.
 	 * @param [in] clear_str Set source data to empty. Default = true.
-	 * @thow memory_error when moving to/from a nullptr.
+	 * @throw memory_error when moving to/from a nullptr.
 	 * @return Pointer to the updated destination string.
 	 */
 	wcstring wstr_move(wcstring source_str, wcstring destination_str,

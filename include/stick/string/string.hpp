@@ -71,7 +71,7 @@ namespace stick {
 		string(const string &str) noexcept = default;
 		/**
 		 * Move constructor.
-		 * @param [in,out] string String to move from and clear.
+		 * @param [in,out] str String to move from and clear.
 		 */
 		string(string &&str) noexcept = default;
 
@@ -156,14 +156,14 @@ namespace stick {
 		 * Append the given string to this one.
 		 * @param [in] str String to append.
 		 * @param [in] length Length of the string to append.
-		 * @thow memory_error when appending a nullptr.
+		 * @throw memory_error when appending a nullptr.
 		 * @return Self instance.
 		 */
 		string &append(const_cstring str, size_t length);
 		/**
 		 * Append the given string to this one.
 		 * @param [in] str String to append.
-		 * @thow memory_error when appending a nullptr.
+		 * @throw memory_error when appending a nullptr.
 		 * @return Self instance.
 		 */
 		string &append(const_cstring str);
@@ -178,14 +178,14 @@ namespace stick {
 		 * Preppend the given string to this one.
 		 * @param [in] str String to preppend.
 		 * @param [in] length Length of the string to preppend.
-		 * @thow memory_error when prepending a nullptr.
+		 * @throw memory_error when prepending a nullptr.
 		 * @return Self instance.
 		 */
 		string &preppend(const_cstring str, size_t length);
 		/**
 		 * Preppend the given string to this one.
 		 * @param [in] str String to preppend.
-		 * @thow memory_error when prepending a nullptr.
+		 * @throw memory_error when prepending a nullptr.
 		 * @return Self instance.
 		 */
 		string &preppend(const_cstring str);
@@ -359,9 +359,7 @@ namespace stick {
 		/**
 		 * Find and replace a specific string inside this string.
 		 * @param [in] pattern String to be replaced.
-		 * @param [in] pattern_length Length of the string to be replaced.
 		 * @param [in] replacement String to replace with.
-		 * @param [in] replacement_length Length of the string to replace with.
 		 * @param [in] max_matches Max matches to be replaces.
 		 * @param [in] wide_dict If characters pool is varied. Default = true.
 		 * @param [in] alphabet_size Max ASCII code of possible characters.
@@ -375,9 +373,7 @@ namespace stick {
 		/**
 		 * Find and replace a specific string inside this string.
 		 * @param [in] pattern String to be replaced.
-		 * @param [in] pattern_length Length of the string to be replaced.
 		 * @param [in] replacement String to replace with.
-		 * @param [in] replacement_length Length of the string to replace with.
 		 * @param [in] max_matches Max matches to be replaces.
 		 * @param [in] wide_dict If characters pool is varied. Default = true.
 		 * @param [in] alphabet_size Max ASCII code of possible characters.
@@ -431,7 +427,7 @@ namespace stick {
 		string &operator=(const string &str) noexcept = default;
 		/**
 		 * Move content from other string.
-		 * @param [in,out] string String to move from and clear.
+		 * @param [in,out] str String to move from and clear.
 		 * @return Self instance.
 		 */
 		string &operator=(string &&str) noexcept;
