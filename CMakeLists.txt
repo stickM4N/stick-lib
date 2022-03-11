@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.21 FATAL_ERROR)
 
 
 project("stick::lib"
-        VERSION 0.0.5.7
+        VERSION 0.0.5.20
         DESCRIPTION "Full and cross-platform implementation of many libraries without any dependencies."
         HOMEPAGE_URL "https://github.com/stickM4N/stick-lib"
         LANGUAGES CXX)
@@ -65,6 +65,8 @@ add_library("lib" STATIC
         "include/stick/string/wstring.hpp"
         "source/stick/string/wstring.cpp"
         #   templates
+        "include/stick/templates/numeric.hpp"
+        "include/stick/templates/numeric_impl.hpp"
         "include/stick/templates/reference.hpp"
         "include/stick/templates/reference_impl.hpp")
 
