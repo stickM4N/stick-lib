@@ -3,5 +3,5 @@
  * @author Julio C. Galindo (stickM4N)
  * @file stick_templates
  */
-#include "stick/templates/numeric.hpp"
-#include "stick/templates/reference.hpp"
+#include "stick/templates/numeric.tpp"
+#include "stick/templates/reference.tpp"

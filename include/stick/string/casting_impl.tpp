@@ -1,7 +1,7 @@
 /**
  * String casting. String casting template implementations.
  * @brief String casting template implementations.
- * @file casting_impl.hpp
+ * @file casting_impl.tpp
  * @author Julio C. Galindo (stickM4N)
  */
 #if defined(_stick_lib_string_casting_impl_)

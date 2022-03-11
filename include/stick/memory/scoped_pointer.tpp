@@ -2,7 +2,7 @@
  * Scoped pointer to assert a correct dynamic memory usage.
  * @brief Pointer that is automatically deallocated once it goes ot of the
  * scope.
- * @file scoped_pointer.hpp
+ * @file scoped_pointer.tpp
  * @author Julio C. Galindo (stickM4N)
  */
 #if not defined(_stick_lib_memory_scoped_pointer_)
@@ -208,7 +208,7 @@ namespace stick {
 
 
 #	define _stick_lib_memory_scoped_pointer_impl_
-#	include "../memory/scoped_pointer_impl.hpp"
+#	include "../memory/scoped_pointer_impl.tpp"
 #	undef _stick_lib_memory_scoped_pointer_impl_
 
 

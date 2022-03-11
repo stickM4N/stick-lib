@@ -10,7 +10,7 @@
 
 
 #	include "../../../include/stick/error/memory_error.hpp"
-#	include "../../../include/stick/memory/management.hpp"
+#	include "../../../include/stick/memory/management.tpp"
 
 
 namespace stick {

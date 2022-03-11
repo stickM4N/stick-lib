@@ -3,6 +3,6 @@
  * @author Julio C. Galindo (stickM4N)
  * @file stick_memory
  */
-#include "stick/memory/management.hpp"
-#include "stick/memory/scoped_pointer.hpp"
-#include "stick/memory/storage.hpp"
+#include "stick/memory/management.tpp"
+#include "stick/memory/scoped_pointer.tpp"
+#include "stick/memory/storage.tpp"

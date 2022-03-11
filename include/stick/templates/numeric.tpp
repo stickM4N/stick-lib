@@ -1,7 +1,7 @@
 /**
  * Numeric related templates.
  * @brief Numeric related templates.
- * @file numeric.hpp
+ * @file numeric.tpp
  * @author Julio C. Galindo (stickM4N)
  */
 #if not defined(_stick_lib_templates_numeric_)
@@ -20,7 +20,7 @@ namespace stick {
 	 * @tparam other_numbers Rest of the numbers to compare
 	 */
 	template<size_t first_number, size_t... other_numbers>
-	struct find_max { };
+	struct find_max;
 
 
 	/**
@@ -29,14 +29,14 @@ namespace stick {
 	 * @tparam other_numbers Rest of the numbers to compare
 	 */
 	template<size_t first_number, size_t... other_numbers>
-	struct find_min { };
+	struct find_min;
 
 
 }   // namespace stick
 
 
 #	define _stick_lib_templates_numeric_impl_
-#	include "../templates/numeric_impl.hpp"
+#	include "../templates/numeric_impl.tpp"
 #	undef _stick_lib_templates_numeric_impl_
 
 

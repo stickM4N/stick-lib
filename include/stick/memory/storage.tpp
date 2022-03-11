@@ -1,7 +1,7 @@
 /**
  * Data storage structure to allocate aligned data.
  * @brief Memory data storage with alignment.
- * @file storage.hpp
+ * @file storage.tpp
  * @author Julio C. Galindo (stickM4N)
  */
 #if not defined(_stick_lib_memory_storage_)

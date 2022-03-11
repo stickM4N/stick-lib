@@ -1,7 +1,7 @@
 /**
  * Pair structure.
  * @brief Pair structure template.
- * @file pair.hpp
+ * @file pair.tpp
  * @author Julio C. Galindo (stickM4N)
  */
 #if not defined(_stick_lib_data_structures_pair_)
@@ -85,7 +85,7 @@ namespace stick {
 
 
 #	define _stick_lib_data_structures_pair_impl_
-#	include "../data_structures/pair_impl.hpp"
+#	include "../data_structures/pair_impl.tpp"
 #	undef _stick_lib_data_structures_pair_impl_
 
 

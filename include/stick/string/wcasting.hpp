@@ -245,7 +245,7 @@ namespace stick {
 
 
 #	define _stick_lib_string_wcasting_impl_
-#	include "../string/wcasting_impl.hpp"
+#	include "../string/wcasting_impl.tpp"
 #	undef _stick_lib_string_wcasting_impl_
 
 

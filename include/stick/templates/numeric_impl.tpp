@@ -1,7 +1,7 @@
 /**
  * Numeric related templates. Template implementations.
  * @brief Numeric related template implementations.
- * @file numeric_impl.hpp
+ * @file numeric_impl.tpp
  * @author Julio C. Galindo (stickM4N)
  */
 #if defined(_stick_lib_templates_numeric_impl_)

@@ -1,7 +1,7 @@
 /**
  * Wide string casting. Wide string casting template implementations.
  * @brief Wide string casting template implementations.
- * @file wcasting_impl.hpp
+ * @file wcasting_impl.tpp
  * @author Julio C. Galindo (stickM4N)
  */
 #if defined(_stick_lib_string_wcasting_impl_)

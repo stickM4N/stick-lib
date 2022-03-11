@@ -245,7 +245,7 @@ namespace stick {
 
 
 #	define _stick_lib_string_casting_impl_
-#	include "../string/casting_impl.hpp"
+#	include "../string/casting_impl.tpp"
 #	undef _stick_lib_string_casting_impl_
 
 

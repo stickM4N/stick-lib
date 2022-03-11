@@ -1,14 +1,14 @@
 /**
  * Type-reference related templates. Template implementations.
  * @brief Type-reference related template implementations.
- * @file reference_impl.hpp
+ * @file reference_impl.tpp
  * @author Julio C. Galindo (stickM4N)
  */
 #if defined(_stick_lib_templates_reference_impl_)
 
 
 #	include "../error/memory_error.hpp"
-#	include "../memory/storage.hpp"
+#	include "../memory/storage.tpp"
 
 
 namespace stick {

@@ -1,15 +1,15 @@
 /**
  * Hybrid FIFO-LIFO array. Template implementations.
  * @brief Hybrid array template implementations.
- * @file array_impl.hpp
+ * @file array_impl.tpp
  * @author Julio C. Galindo (stickM4N)
  */
 #if defined(_stick_lib_data_structures_array_impl_)
 
 
 #	include "../error/out_of_range_error.hpp"
-#	include "../memory/management.hpp"
-#	include "../templates/reference.hpp"
+#	include "../memory/management.tpp"
+#	include "../templates/reference.tpp"
 
 
 namespace stick {

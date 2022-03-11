@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.21 FATAL_ERROR)
 
 
 project("stick::lib"
-        VERSION 0.0.5.33
+        VERSION 0.0.5.50
         DESCRIPTION "Full and cross-platform implementation of many libraries without any dependencies."
         HOMEPAGE_URL "https://github.com/stickM4N/stick-lib"
         LANGUAGES CXX)
@@ -20,11 +20,11 @@ option(std_exception_base "Use std::exception as error engine base." ON)
 
 add_library("lib" STATIC
         #   data_structures
-        "include/stick/data_structures/array.hpp"
-        "include/stick/data_structures/array_impl.hpp"
+        "include/stick/data_structures/array.tpp"
+        "include/stick/data_structures/array_impl.tpp"
         "include/stick/data_structures/list_constexpr.hpp"
-        "include/stick/data_structures/pair.hpp"
-        "include/stick/data_structures/pair_impl.hpp"
+        "include/stick/data_structures/pair.tpp"
+        "include/stick/data_structures/pair_impl.tpp"
         #   defines
         "include/stick/defines/arch.hpp"
         "include/stick/defines/compiler.hpp"
@@ -33,11 +33,11 @@ add_library("lib" STATIC
         "include/stick/defines/predef.hpp"
         "include/stick/defines/types.hpp"
         #   memory
-        "include/stick/memory/storage.hpp"
-        "include/stick/memory/management.hpp"
-        "include/stick/memory/management_impl.hpp"
-        "include/stick/memory/scoped_pointer.hpp"
-        "include/stick/memory/scoped_pointer_impl.hpp"
+        "include/stick/memory/storage.tpp"
+        "include/stick/memory/management.tpp"
+        "include/stick/memory/management_impl.tpp"
+        "include/stick/memory/scoped_pointer.tpp"
+        "include/stick/memory/scoped_pointer_impl.tpp"
         #   error
         "include/stick/error/base_error.hpp"
         "source/stick/error/base_error.cpp"
@@ -51,24 +51,24 @@ add_library("lib" STATIC
         "source/stick/error/out_of_range_error.cpp"
         #   string
         "include/stick/string/casting.hpp"
-        "include/stick/string/casting_impl.hpp"
+        "include/stick/string/casting_impl.tpp"
         "source/stick/string/casting.cpp"
         "include/stick/string/cstring.hpp"
         "source/stick/string/cstring.cpp"
         "include/stick/string/string.hpp"
         "source/stick/string/string.cpp"
         "include/stick/string/wcasting.hpp"
-        "include/stick/string/wcasting_impl.hpp"
+        "include/stick/string/wcasting_impl.tpp"
         "source/stick/string/wcasting.cpp"
         "include/stick/string/wcstring.hpp"
         "source/stick/string/wcstring.cpp"
         "include/stick/string/wstring.hpp"
         "source/stick/string/wstring.cpp"
         #   templates
-        "include/stick/templates/numeric.hpp"
-        "include/stick/templates/numeric_impl.hpp"
-        "include/stick/templates/reference.hpp"
-        "include/stick/templates/reference_impl.hpp")
+        "include/stick/templates/numeric.tpp"
+        "include/stick/templates/numeric_impl.tpp"
+        "include/stick/templates/reference.tpp"
+        "include/stick/templates/reference_impl.tpp")
 
 target_include_directories("lib" PUBLIC
         $<INSTALL_INTERFACE:include/>
@@ -89,8 +89,8 @@ if (DOXYGEN_FOUND)
     set(DOXYGEN_SOURCE_BROWSER "YES")
     set(DOXYGEN_INLINE_SOURCES "YES")
 
-    set(DOXYGEN_FILE_PATTERNS "*")
-    set(DOXYGEN_EXTENSION_MAPPING "no_extension=C++")
+    set(DOXYGEN_FILE_PATTERNS "*" "*.cpp" "*.hpp" "*.tpp")
+    set(DOXYGEN_EXTENSION_MAPPING "no_extension=C++" ".tpp=C++")
     set(DOXYGEN_EXTRACT_ALL "YES")
     set(DOXYGEN_MACRO_EXPANSION "YES")
 

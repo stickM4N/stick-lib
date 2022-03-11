@@ -1,14 +1,14 @@
 /**
  * Scoped pointer. Template implementations.
  * @brief Scoped pointer template implementations.
- * @file scoped_pointer_impl.hpp
+ * @file scoped_pointer_impl.tpp
  * @author Julio C. Galindo (stickM4N)
  */
 #if defined(_stick_lib_memory_scoped_pointer_impl_)
 
 
 #	include "../error/out_of_range_error.hpp"
-#	include "../memory/management.hpp"
+#	include "../memory/management.tpp"
 
 
 namespace stick {

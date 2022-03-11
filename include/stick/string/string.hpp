@@ -9,9 +9,9 @@
 
 
 
-#	include "../data_structures/array.hpp"
+#	include "../data_structures/array.tpp"
 #	include "../defines/types.hpp"
-#	include "../memory/scoped_pointer.hpp"
+#	include "../memory/scoped_pointer.tpp"
 
 
 namespace stick {

@@ -1,14 +1,14 @@
 /**
  * Memory management utilities. Template implementations.
  * @brief Memory management template implementations.
- * @file management_impl.hpp
+ * @file management_impl.tpp
  * @author Julio C. Galindo (stickM4N)
  */
 #if defined(_stick_lib_memory_management_impl_)
 
 
 #	include "../error/memory_error.hpp"
-#	include "../memory/storage.hpp"
+#	include "../memory/storage.tpp"
 
 
 namespace stick {

@@ -2,7 +2,7 @@
  * Memory management utilities. Allocation, deallocation, set, copy, move and
  * clear dynamic memory.
  * @brief Memory management.
- * @file management.hpp
+ * @file management.tpp
  * @author Julio C. Galindo (stickM4N)
  */
 #if not defined(_stick_lib_memory_management_)
@@ -127,7 +127,7 @@ namespace stick {
 
 
 #	define _stick_lib_memory_management_impl_
-#	include "../memory/management_impl.hpp"
+#	include "../memory/management_impl.tpp"
 #	undef _stick_lib_memory_management_impl_
 
 

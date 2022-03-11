@@ -2,7 +2,7 @@
  * Hybrid FIFO-LIFO array template. Can be used as a queue and a stack
  * simultaneously.
  * @brief Hybrid array template.
- * @file array.hpp
+ * @file array.tpp
  * @author Julio C. Galindo (stickM4N)
  */
 #if not defined(_stick_lib_data_structures_array_)
@@ -12,7 +12,7 @@
 
 #	include "../data_structures/list_constexpr.hpp"
 #	include "../defines/types.hpp"
-#	include "../memory/scoped_pointer.hpp"
+#	include "../memory/scoped_pointer.tpp"
 
 
 namespace stick {
@@ -403,7 +403,7 @@ namespace stick {
 
 
 #	define _stick_lib_data_structures_array_impl_
-#	include "../data_structures/array_impl.hpp"
+#	include "../data_structures/array_impl.tpp"
 #	undef _stick_lib_data_structures_array_impl_
 
 

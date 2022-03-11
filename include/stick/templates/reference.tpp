@@ -1,7 +1,7 @@
 /**
  * Type-reference related templates.
  * @brief Type-reference related templates.
- * @file reference.hpp
+ * @file reference.tpp
  * @author Julio C. Galindo (stickM4N)
  */
 #if not defined(_stick_lib_templates_reference_)
@@ -43,7 +43,7 @@ namespace stick {
 
 
 #	define _stick_lib_templates_reference_impl_
-#	include "../templates/reference_impl.hpp"
+#	include "../templates/reference_impl.tpp"
 #	undef _stick_lib_templates_reference_impl_
 
 

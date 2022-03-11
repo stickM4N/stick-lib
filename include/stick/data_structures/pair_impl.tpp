@@ -1,14 +1,14 @@
 /**
  * Pair structure. Template implementations.
  * @brief Pair structure template implementations.
- * @file pair_impl.hpp
+ * @file pair_impl.tpp
  * @author Julio C. Galindo (stickM4N)
  */
 #if defined(_stick_lib_data_structures_pair_impl_)
 
 
-#	include "../memory/management.hpp"
-#	include "../templates/reference.hpp"
+#	include "../memory/management.tpp"
+#	include "../templates/reference.tpp"
 
 
 namespace stick {
