@@ -5,3 +5,4 @@
  */
 #include "stick/templates/numeric.tpp"
 #include "stick/templates/reference.tpp"
+#include "stick/templates/types.tpp"
