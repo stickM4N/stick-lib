@@ -111,7 +111,7 @@ namespace stick {
 
 	string &string::append(const_cstring str, size_t length) {
 		if (this->available_pool() < length)
-			this->expand(this->available_pool() - length + this->pool);
+			this->expand(length - this->available_pool() + this->pool);
 
 		str_copy(str, length, this->end());
 		this->data_size += length;
