@@ -24,8 +24,8 @@ namespace stick {
 	template<typename type>
 	class scoped_pointer {
 
-		type *ptr = nullptr;
-		size_t allocated_elements = 0ul;
+		type *ptr = nullptr;   ///< Memory space pointer.
+		size_t allocated_elements = 0ul;   ///< Total allocated elements.
 
 	public:
 		/**

@@ -9,30 +9,20 @@
 #if defined(_stick_lib_error_generic_)
 
 
-#	include "../../../include/stick/string/cstring.hpp"
+#	include "../../../include/stick/string/string.hpp"
 
 
 namespace stick {
 
 
-	generic_error::generic_error(const_cstring description) noexcept {
-		this->description_cache = new_str(description);
-	}
-	generic_error::generic_error(const generic_error &error) noexcept {
-		this->description_cache = new_str(error.description_cache);
-	}
-	generic_error::generic_error(generic_error &&error) noexcept {
-		this->description_cache = error.description_cache;
-		error.description_cache = nullptr;
-	}
-
-	generic_error::~generic_error() noexcept {
-		delete_str(this->description_cache);
-	}
+	generic_error::generic_error(const_cstring description) noexcept
+	    : base_error(description) { }
+	generic_error::generic_error(const string &description) noexcept
+	    : base_error(description) { }
 
 
-	const_cstring generic_error::description() const noexcept {
-		return this->description_cache;
+	string generic_error::description() const noexcept {
+		return *this->description_cache;
 	}
 
 

@@ -20,24 +20,12 @@ namespace stick {
 	 */
 	class out_of_range_error : public base_error {
 
-		/**
-		 * Stores the error description given by the programmer.
-		 */
-		cstring description_cache;
-
 	public:
 		explicit out_of_range_error(const_cstring description) noexcept;
-		out_of_range_error(const out_of_range_error &error) noexcept;
-		out_of_range_error(out_of_range_error &&error) noexcept;
-
-		~out_of_range_error() noexcept override;
+		explicit out_of_range_error(const string &description) noexcept;
 
 
-		/**
-		 * Get the error description.
-		 * @return Description string.
-		 */
-		const_cstring description() const noexcept override;
+		string description() const noexcept override;
 	};
 
 

@@ -20,24 +20,12 @@ namespace stick {
 	 */
 	class cast_error : public base_error {
 
-		/**
-		 * Stores the error description given by the programmer.
-		 */
-		cstring description_cache;
-
 	public:
 		explicit cast_error(const_cstring description) noexcept;
-		cast_error(const cast_error &error) noexcept;
-		cast_error(cast_error &&error) noexcept;
-
-		~cast_error() noexcept override;
+		explicit cast_error(const string &description) noexcept;
 
 
-		/**
-		 * Get the error description.
-		 * @return Description string.
-		 */
-		const_cstring description() const noexcept override;
+		string description() const noexcept override;
 	};
 
 

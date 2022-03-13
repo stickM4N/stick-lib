@@ -29,21 +29,30 @@
 namespace stick {
 
 
+	class string;
+
+
 	/**
 	 * Base class for error description.
 	 */
 	class base_error stick_STD_EXCEPTION_BASED_INHERIT_ {
 
+	protected:
+		string *description_cache;   ///< Stores the error description.
+
+		explicit base_error(const_cstring description) noexcept;
+		explicit base_error(const string &description) noexcept;
+
 	public:
 		stick_STD_EXCEPTION_BASED_VIRTUAL_ ~base_error() noexcept
-		    stick_STD_EXCEPTION_BASED_OVERRIDE_ = default;
+		    stick_STD_EXCEPTION_BASED_OVERRIDE_;
 
 
 		/**
 		 * Get the error description.
 		 * @return Description cstring.
 		 */
-		virtual const_cstring description() const noexcept = 0;
+		virtual string description() const noexcept;
 		/**
 		 * Get the error description. Mimic description for std::exception
 		 * compatibility.

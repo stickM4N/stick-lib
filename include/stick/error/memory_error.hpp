@@ -20,24 +20,12 @@ namespace stick {
 	 */
 	class memory_error : public base_error {
 
-		/**
-		 * Stores the error description given by the programmer.
-		 */
-		cstring description_cache;
-
 	public:
 		explicit memory_error(const_cstring description) noexcept;
-		memory_error(const memory_error &error) noexcept;
-		memory_error(memory_error &&error) noexcept;
-
-		~memory_error() noexcept override;
+		explicit memory_error(const string &description) noexcept;
 
 
-		/**
-		 * Get the error description.
-		 * @return Description string.
-		 */
-		const_cstring description() const noexcept override;
+		string description() const noexcept override;
 	};
 
 

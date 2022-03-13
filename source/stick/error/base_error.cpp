@@ -9,9 +9,26 @@
 #if defined(_stick_lib_error_base_)
 
 
+#	include "../../../include/stick/string/string.hpp"
+
+
 namespace stick {
 
 
+	base_error::base_error(const_cstring description) noexcept
+	    : description_cache(new string(description)) { }
+	base_error::base_error(const string &description) noexcept
+	    : description_cache(new string(description)) { }
+
+	base_error::~base_error() noexcept {
+		delete this->description_cache;
+		this->description_cache = nullptr;
+	}
+
+
+	string base_error::description() const noexcept {
+		return *this->description_cache;
+	}
 	const_cstring base_error::what() const noexcept {
 		return this->description();
 	}

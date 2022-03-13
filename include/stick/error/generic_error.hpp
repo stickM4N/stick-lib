@@ -20,24 +20,12 @@ namespace stick {
 	 */
 	class generic_error : public base_error {
 
-		/**
-		 * Stores the error description given by the programmer.
-		 */
-		cstring description_cache;
-
 	public:
 		explicit generic_error(const_cstring description) noexcept;
-		generic_error(const generic_error &error) noexcept;
-		generic_error(generic_error &&error) noexcept;
-
-		~generic_error() noexcept override;
+		explicit generic_error(const string &description) noexcept;
 
 
-		/**
-		 * Get the error description.
-		 * @return Description string.
-		 */
-		const_cstring description() const noexcept override;
+		string description() const noexcept override;
 	};
 
 
