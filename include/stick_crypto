@@ -1,0 +1,8 @@
+/**
+ * Include all crypto headers.
+ * @author Julio C. Galindo (stickM4N)
+ * @file stick_crypto
+ */
+#include "stick/crypto/hash/base_hash.hpp"
+#include "stick/crypto/hash/hash_fnv1.hpp"
+#include "stick/crypto/hash/hash_fnv1a.hpp"

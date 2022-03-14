@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.21 FATAL_ERROR)
 
 
 project("stick::lib"
-        VERSION 0.0.6.30
+        VERSION 0.0.7.0
         DESCRIPTION "Full and cross-platform implementation of many libraries without any dependencies."
         HOMEPAGE_URL "https://github.com/stickM4N/stick-lib"
         LANGUAGES CXX)
@@ -19,6 +19,13 @@ option(std_exception_base "Use std::exception as error engine base." ON)
 
 
 add_library("lib" STATIC
+        #   crypto
+        "include/stick/crypto/hash/base_hash.hpp"
+        "source/stick/crypto/hash/base_hash.cpp"
+        "include/stick/crypto/hash/hash_fnv1.hpp"
+        "source/stick/crypto/hash/hash_fnv1.cpp"
+        "include/stick/crypto/hash/hash_fnv1a.hpp"
+        "source/stick/crypto/hash/hash_fnv1a.cpp"
         #   data_structures
         "include/stick/data_structures/array.tpp"
         "include/stick/data_structures/array_impl.tpp"
