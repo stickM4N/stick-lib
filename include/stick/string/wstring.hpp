@@ -47,6 +47,12 @@ namespace stick {
 		 */
 		wstring(const_wcstring str);
 		/**
+		 * Append the given char to this string.
+		 * @param [in] c Char to append.
+		 * @return Self instance.
+		 */
+		wstring &append(wchar_t c);
+		/**
 		 * Create a string with repetitions of the same character.
 		 * @param [in] c Character to fill the string.
 		 * @param [in] repetitions Number of times the character will be
@@ -287,6 +293,18 @@ namespace stick {
 		 * @return Self instance.
 		 */
 		wstring &shrink(uint32_t start_position, size_t max_length = -1ul);
+
+		/**
+		 * Get a copy of the string reversed.
+		 * @return New string with its content reversed.
+		 */
+		wstring mirror() const noexcept;
+
+		/**
+		 * Reverses the content of this string.
+		 * @return Self instance.
+		 */
+		wstring &reverse() noexcept;
 
 
 		/**

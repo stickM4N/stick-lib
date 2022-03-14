@@ -121,6 +121,9 @@ namespace stick {
 	wstring &wstring::append(const_wcstring str) {
 		return this->append(str, wstr_length(str));
 	}
+	wstring &wstring::append(wchar_t c) {
+		return this->append(&c, 1ul);
+	}
 	wstring &wstring::append(const wstring &str) noexcept {
 		return this->append(str.data, str.length());
 	}
@@ -200,6 +203,23 @@ namespace stick {
 	}
 	wstring &wstring::shrink(uint32_t start_position, size_t max_length) {
 		return this->shrink(static_cast<size_t>(start_position), max_length);
+	}
+
+
+	wstring wstring::mirror() const noexcept {
+		wstring reversed_str(this->length());
+		for (auto c = this->rbegin(); c != this->rend(); c--)
+			reversed_str.append(*c);
+
+		return reversed_str;
+	}
+
+	wstring &wstring::reverse() noexcept {
+		wstring reversed_str(this->length());
+		for (auto c = this->rbegin(); c != this->rend(); c--)
+			reversed_str.append(*c);
+
+		return *this = move(reversed_str);
 	}
 
 

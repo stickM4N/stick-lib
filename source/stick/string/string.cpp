@@ -121,6 +121,9 @@ namespace stick {
 	string &string::append(const_cstring str) {
 		return this->append(str, str_length(str));
 	}
+	string &string::append(char_t c) {
+		return this->append(&c, 1ul);
+	}
 	string &string::append(const string &str) noexcept {
 		return this->append(str.data, str.length());
 	}
@@ -200,6 +203,23 @@ namespace stick {
 	}
 	string &string::shrink(uint32_t start_position, size_t max_length) {
 		return this->shrink(static_cast<size_t>(start_position), max_length);
+	}
+
+
+	string string::mirror() const noexcept {
+		string reversed_str(this->length());
+		for (auto c = this->rbegin(); c != this->rend(); c--)
+			reversed_str.append(*c);
+
+		return reversed_str;
+	}
+
+	string &string::reverse() noexcept {
+		string reversed_str(this->length());
+		for (auto c = this->rbegin(); c != this->rend(); c--)
+			reversed_str.append(*c);
+
+		return *this = move(reversed_str);
 	}
 
 

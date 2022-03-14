@@ -168,6 +168,12 @@ namespace stick {
 		 */
 		string &append(const_cstring str);
 		/**
+		 * Append the given char to this string.
+		 * @param [in] c Char to append.
+		 * @return Self instance.
+		 */
+		string &append(char_t c);
+		/**
 		 * Append the given string to this one.
 		 * @param [in] str String to append.
 		 * @return Self instance.
@@ -288,6 +294,18 @@ namespace stick {
 		 */
 		string &shrink(uint32_t start_position, size_t max_length = -1ul);
 
+
+		/**
+		 * Get a copy of the string reversed.
+		 * @return New string with its content reversed.
+		 */
+		string mirror() const noexcept;
+
+		/**
+		 * Reverses the content of this string.
+		 * @return Self instance.
+		 */
+		string &reverse() noexcept;
 
 		/**
 		 * Find where the pattern appears in the string. Boyer-Moore Algorithm
