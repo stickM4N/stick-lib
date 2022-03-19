@@ -83,19 +83,19 @@ namespace stick {
 
 	stick_constexpr type_str type_id<type>::extract_name() noexcept {
 
-#	if stick_COMPILER_ID == stick_COMPILER_ID_CLANG
+#	if stick_IS_COMPILER_CLANG
 		return type_str(stick_CONTEXT_PRETTY_FUNCTION, -1ul, 67ul, 1ul);
 
-#	elif stick_COMPILER_ID == stick_COMPILER_ID_GCC
+#	elif stick_IS_COMPILER_GCC
 		return type_str(stick_CONTEXT_PRETTY_FUNCTION, -1ul, 83ul, 1ul);
 
 		/* TODO: Add predefined return according to other compiler notations.
-#	elif stick_COMPILER_ID == stick_COMPILER_ID_MSVC
+#	elif stick_IS_COMPILER_MSVC
 
-#	elif stick_COMPILER_ID == stick_COMPILER_ID_SUNPRO
+#	elif stick_IS_COMPILER_SUNPRO
 		*/
 
-#	else   // stick_COMPILER_ID == stick_COMPILER_ID_UNKNOWN
+#	else   // stick_IS_COMPILER_UNKNOWN
 #		if stick_HAS_CONSTEXPR14
 
 		const_cstring context = stick_CONTEXT_PRETTY_FUNCTION;

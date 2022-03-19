@@ -13,6 +13,8 @@ namespace stick {
 
 
 #	define stick_CXX_VERSION __cplusplus   ///< Current C++ standard version.
+#	define stick_CXX_CONSTEXPR_VERSION                                        \
+		__cpp_constexpr   ///< Current C++ constexpr version.
 
 #	define stick_CURRENT_DATE __DATE__   ///< Current date.
 #	define stick_CURRENT_TIME __TIME__   ///< Current time.
@@ -25,41 +27,49 @@ namespace stick {
 		__PRETTY_FUNCTION__   ///< Context function declaration.
 
 
-	/// Constexpr definitions for each standard.
+
+	/**
+	 * Constexpr definitions for each standard.
+	 * @def stick_constexpr20
+	 * 			Declare as constexpr if stick_HAS_CONSTEXPR20.
+	 * @def stick_constexpr17
+	 * 			Declare as constexpr if stick_HAS_CONSTEXPR17.
+	 * @def stick_constexpr14
+	 * 			Declare as constexpr if stick_HAS_CONSTEXPR14.
+	 * @def stick_constexpr
+	 * 			Declare as constexpr.
+	 */
+
 #	define stick_constexpr constexpr
 
-#	if __cpp_constexpr == 201907L
-#		define stick_HAS_CONSTEXPR20 true
-#		define stick_HAS_CONSTEXPR17 true
-#		define stick_HAS_CONSTEXPR14 true
 
+#	define stick_HAS_CONSTEXPR20                                              \
+		(stick_CXX_CONSTEXPR_VERSION                                           \
+		 > 201900ul)   ///< Checks if cxx20 constexpr is supported.
+#	define stick_HAS_CONSTEXPR17                                              \
+		(stick_CXX_CONSTEXPR_VERSION                                           \
+		 > 201700ul)   ///< Checks if cxx17 constexpr is supported.
+#	define stick_HAS_CONSTEXPR14                                              \
+		(stick_CXX_CONSTEXPR_VERSION                                           \
+		 > 201300ul)   ///< Checks if cxx14 constexpr is supported.
+
+
+#	if stick_HAS_CONSTEXPR20
 #		define stick_constexpr20 constexpr
 #		define stick_constexpr17 constexpr
 #		define stick_constexpr14 constexpr
 
-#	elif __cpp_constexpr == 201603L
-#		define stick_HAS_CONSTEXPR20 false
-#		define stick_HAS_CONSTEXPR17 true
-#		define stick_HAS_CONSTEXPR14 true
-
+#	elif stick_HAS_CONSTEXPR17
 #		define stick_constexpr20
 #		define stick_constexpr17 constexpr
 #		define stick_constexpr14 constexpr
 
-#	elif __cpp_constexpr == 201304L
-#		define stick_HAS_CONSTEXPR20 false
-#		define stick_HAS_CONSTEXPR17 false
-#		define stick_HAS_CONSTEXPR14 true
-
+#	elif stick_HAS_CONSTEXPR14
 #		define stick_constexpr20
 #		define stick_constexpr17
 #		define stick_constexpr14 constexpr
 
 #	else
-#		define stick_HAS_CONSTEXPR20 false
-#		define stick_HAS_CONSTEXPR17 false
-#		define stick_HAS_CONSTEXPR14 false
-
 #		define stick_constexpr20
 #		define stick_constexpr17
 #		define stick_constexpr14
