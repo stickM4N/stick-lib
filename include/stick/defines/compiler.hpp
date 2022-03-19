@@ -25,35 +25,45 @@ namespace stick {
 
 
 	/**
-	 * @def stick_COMPILER
+	 * @def stick_COMPILER_ID
+	 * 			Current compiler ID.
+	 * @def stick_COMPILER_NAME
 	 * 			Current compiler name.
 	 * @def stick_COMPILER_VERSION
 	 * 			Current compiler version.
 	 */
 
 
-#	define stick_COMPILER_CLANG "Clang"   ///< Compiler name for Clang.
-#	define stick_COMPILER_GCC                                                 \
+#	define stick_COMPILER_ID_CLANG 1   ///< Compiler ID for Clang.
+#	define stick_COMPILER_ID_GCC 2   ///< Compiler ID for GNU C/C++ Compiler.
+#	define stick_COMPILER_ID_MSVC 3   ///< Compiler ID for MS Visual C++.
+#	define stick_COMPILER_ID_SUNPRO 4   ///< Compiler ID for Solaris Studio.
+#	define stick_COMPILER_ID_UNKNOWN 0   ///< Compiler ID for unknown.
+
+#	define stick_COMPILER_NAME_CLANG "Clang"   ///< Compiler name for Clang.
+#	define stick_COMPILER_NAME_GCC                                            \
 		"GNU C/C++ Compiler"   ///< Compiler name for GNU C/C++ Compiler.
-#	define stick_COMPILER_MSVC                                                \
+#	define stick_COMPILER_NAME_MSVC                                           \
 		"Microsoft Visual C/C++"   ///< Compiler name for Microsoft Visual
 		                           ///< C/C++.
-#	define stick_COMPILER_SUNPRO                                              \
+#	define stick_COMPILER_NAME_SUNPRO                                         \
 		"Oracle Solaris Studio"   ///< Compiler name for Oracle Solaris Studio.
-#	define stick_COMPILER_UNKNOWN                                             \
+#	define stick_COMPILER_NAME_UNKNOWN                                        \
 		"compiler_unknown"   ///< Compiler name for unknown.
 
 
 /* ____________________ Clang ____________________ */
 #	if defined(__clang__)
-#		define stick_COMPILER stick_COMPILER_CLANG
+#		define stick_COMPILER_ID stick_COMPILER_ID_CLANG
+#		define stick_COMPILER_NAME stick_COMPILER_NAME_CLANG
 #		define stick_COMPILER_VERSION                                         \
 			stick_COMPILER_MAKE_VERSION(__clang_major__, __clang_minor__,      \
 			                            __clang_patchlevel__)
 
 /* ____________________ GCC ____________________ */
 #	elif defined(__GNUC__)
-#		define stick_COMPILER stick_COMPILER_GCC
+#		define stick_COMPILER_ID stick_COMPILER_ID_GCC
+#		define stick_COMPILER_NAME stick_COMPILER_NAME_GCC
 
 #		if defined(__GNUC_PATCHLEVEL__)
 #			define stick_COMPILER_VERSION                                     \
@@ -67,12 +77,14 @@ namespace stick {
 
 /* ____________________ MSVC ____________________ */
 #	elif defined(_MSC_VER)
-#		define stick_COMPILER stick_COMPILER_MSVC
+#		define stick_COMPILER_ID stick_COMPILER_ID_MSVC
+#		define stick_COMPILER_NAME stick_COMPILER_NAME_MSVC
 #		define stick_COMPILER_VERSION _MSC_FULL_VER
 
 /* ____________________ SUNPRO ____________________ */
 #	elif defined(__SUNPRO_CC) || defined(__SUNPRO_C)
-#		define stick_COMPILER stick_COMPILER_SUNPRO
+#		define stick_COMPILER_ID stick_COMPILER_ID_SUNPRO
+#		define stick_COMPILER_NAME stick_COMPILER_NAME_SUNPRO
 
 #		if defined(__SUNPRO_CC)
 #			if (__SUNPRO_CC >= 0x5100)
@@ -102,7 +114,8 @@ namespace stick {
 
 /* ____________________ unknown ____________________ */
 #	else
-#		define stick_COMPILER stick_COMPILER_UNKNOWN
+#		define stick_COMPILER_ID stick_COMPILER_ID_UNKNOWN
+#		define stick_COMPILER_NAME stick_COMPILER_NAME_UNKNOWN
 
 #	endif
 
