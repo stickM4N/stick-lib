@@ -25,24 +25,24 @@ namespace stick {
 
 
 #	if defined(__BYTE_ORDER__)
-#		if __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__
-#			define stick_ENDIAN stick_ENDIAN_BIG
-#		elif __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
+#		if __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
 #			define stick_ENDIAN stick_ENDIAN_LITTLE
+#		elif __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__
+#			define stick_ENDIAN stick_ENDIAN_BIG
 #		endif
 
 #	elif defined(__BYTE_ORDER)
-#		if __BYTE_ORDER == __BIG_ENDIAN
+#		if __BYTE_ORDER == __LITTLE_ENDIAN
+#			define stick_ENDIAN stick_ENDIAN_LITTLE_
+#		elif _BYTE_ORDER == __BIG_ENDIAN
 #			define stick_ENDIAN stick_ENDIAN_BIG
-#		elif __BYTE_ORDER == __LITTLE_ENDIAN
-#			define stick_ENDIAN stick_ENDIAN_LITTLE
 #		endif
 
 #	elif defined(BYTE_ORDER) && BYTE_ORDER
-#		if BYTE_ORDER == BIG_ENDIAN
-#			define stick_ENDIAN stick_ENDIAN_BIG
-#		elif BYTE_ORDER == LITTLE_ENDIAN
+#		if BYTE_ORDER == LITTLE_ENDIAN
 #			define stick_ENDIAN stick_ENDIAN_LITTLE
+#		elif BYTE_ORDER == BIG_ENDIAN
+#			define stick_ENDIAN stick_ENDIAN_BIG
 #		endif
 
 #	elif (defined(__LITTLE_ENDIAN__) && __LITTLE_ENDIAN__ == 1)               \
@@ -69,7 +69,22 @@ namespace stick {
 
 #	else
 #		define stick_ENDIAN stick_ENDIAN_UNKNOWN
+
 #	endif
+
+
+	/**
+	 * Checks if current endian is a specific one.
+	 * @def stick_IS_ENDIAN_LITTLE
+	 *	 	Checks if current endian is little.
+	 * @def stick_IS_ENDIAN_BIG
+	 * 		Checks if current endian is big.
+	 * @def stick_IS_ENDIAN_UNKNOWN
+	 * 		Checks if current endian is unknown.
+	 */
+#	define stick_IS_ENDIAN_LITTLE (stick_ENDIAN == stick_ENDIAN_LITTLE)
+#	define stick_IS_ENDIAN_BIG (stick_ENDIAN == stick_ENDIAN_BIG)
+#	define stick_IS_ENDIAN_UNKNOWN (stick_ENDIAN == stick_ENDIAN_UNKNOWN)
 
 
 	/**

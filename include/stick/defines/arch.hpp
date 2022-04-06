@@ -25,7 +25,9 @@ namespace stick {
 
 
 	/**
-	 * @def stick_ARCH
+	 * @def stick_ARCH_ID
+	 * 			System current architecture name.
+	 * @def stick_ARCH_NAME
 	 * 			System current architecture name.
 	 * @def stick_ARCH_VERSION
 	 * 			System current architecture version.
@@ -34,13 +36,20 @@ namespace stick {
 	 */
 
 
-#	define stick_ARCH_x86_64                                                  \
+#	define stick_ARCH_ID_x86_64 1   ///< System architecture ID for x86_64.
+#	define stick_ARCH_ID_x86_32 2   ///< System architecture ID for x86_32.
+#	define stick_ARCH_ID_ARM 3   ///< System architecture ID for ARM.
+#	define stick_ARCH_ID_SPARK 4   ///< System architecture ID for SPARK.
+#	define stick_ARCH_ID_UNKNOWN 0   ///< System architecture ID for unknown.
+
+#	define stick_ARCH_NAME_x86_64                                             \
 		"x86_64"   ///< System architecture name for x86_64.
-#	define stick_ARCH_x86_32                                                  \
+#	define stick_ARCH_NAME_x86_32                                             \
 		"x86_32"   ///< System architecture name for x86_32.
-#	define stick_ARCH_ARM "ARM"   ///< System architecture name for ARM.
-#	define stick_ARCH_SPARK "SPARK"   ///< System architecture name for SPARK.
-#	define stick_ARCH_UNKNOWN                                                 \
+#	define stick_ARCH_NAME_ARM "ARM"   ///< System architecture name for ARM.
+#	define stick_ARCH_NAME_SPARK                                              \
+		"SPARK"   ///< System architecture name for SPARK.
+#	define stick_ARCH_NAME_UNKNOWN                                            \
 		"arch_unknown"   ///< System architecture name for unknown.
 
 
@@ -52,7 +61,8 @@ namespace stick {
 /* ____________________ x86_64 ____________________ */
 #	if defined(__x86_64) || defined(__x86_64__) || defined(__amd64__)         \
 	    || defined(__amd64) || defined(_M_X64)
-#		define stick_ARCH stick_ARCH_x86_64
+#		define stick_ARCH_ID stick_ARCH_ID_x86_64
+#		define stick_ARCH_NAME stick_ARCH_NAME_x86_64
 #		define stick_ARCH_WORD_SIZE stick_ARCH_WORD_SIZE_64_BIT
 
 /* ____________________ x86_32 ____________________ */
@@ -60,7 +70,8 @@ namespace stick {
 	    || defined(__i586__) || defined(__i686__) || defined(__i386)           \
 	    || defined(_M_IX86) || defined(_X86_) || defined(__THW_INTEL__)        \
 	    || defined(__I86__) || defined(__INTEL__)
-#		define stick_ARCH stick_ARCH_x86_32
+#		define stick_ARCH_ID stick_ARCH_ID_x86_32
+#		define stick_ARCH_NAME stick_ARCH_NAME_x86_32
 #		define stick_ARCH_WORD_SIZE stick_ARCH_WORD_SIZE_32_BIT
 
 #		if defined(__I86__)
@@ -89,7 +100,8 @@ namespace stick {
 	    || defined(__ARM_ARCH_6KZ__) || defined(__ARM_ARCH_6T2__)              \
 	    || defined(__ARM_ARCH_5TE__) || defined(__ARM_ARCH_5TEJ__)             \
 	    || defined(__ARM_ARCH_4T__) || defined(__ARM_ARCH_4__)
-#		define stick_ARCH stick_ARCH_ARM
+#		define stick_ARCH_ID stick_ARCH_ID_ARM
+#		define stick_ARCH_NAME stick_ARCH_NAME_ARM
 
 #		if defined(__ARM_ARCH)
 #			define stick_ARCH_VERSION stick_ARCH_MAKE_VERSION(__ARM_ARCH, 0, 0)
@@ -125,7 +137,8 @@ namespace stick {
 
 /* ____________________ SPARK ____________________ */
 #	elif defined(__sparc__) || defined(__sparc)
-#		define stick_ARCH stick_ARCH_SPARK
+#		define stick_ARCH_ID stick_ARCH_ID_SPARK
+#		define stick_ARCH_NAME stick_ARCH_NAME_SPARK
 
 #		if defined(__sparcv9) || defined(__sparc_v9__)
 #			define stick_ARCH_VERSION stick_ARCH_MAKE_VERSION(9, 0, 0)
@@ -144,7 +157,8 @@ namespace stick {
 
 /* ____________________ unknown ____________________ */
 #	else
-#		define stick_ARCH stick_ARCH_UNKNOWN
+#		define stick_ARCH_ID stick_ARCH_ID_UNKNOWN
+#		define stick_ARCH_NAME stick_ARCH_NAME_UNKNOWN
 
 #	endif
 
@@ -156,6 +170,26 @@ namespace stick {
 #	if not defined(stick_ARCH_WORD_SIZE)
 #		define stick_ARCH_WORD_SIZE stick_ARCH_WORD_SIZE_UNKNOWN
 #	endif
+
+
+	/**
+	 * Checks if current architecture is a specific one.
+	 * @def stick_IS_ARCH_x86_64
+	 *	 	Checks if current arch is x86_64.
+	 * @def stick_IS_ARCH_x86_32
+	 * 		Checks if current arch is x86_32.
+	 * @def stick_IS_ARCH_ARM
+	 * 		Checks if current arch is ARM.
+	 * @def stick_IS_ARCH_SPARK
+	 * 		Checks if current arch is SPARK.
+	 * @def stick_IS_ARCH_UNKNOWN
+	 * 		Checks if current arch is unknown.
+	 */
+#	define stick_IS_ARCH_x86_64 (stick_ARCH_ID == stick_ARCH_ID_x86_64)
+#	define stick_IS_ARCH_x86_32 (stick_ARCH_ID == stick_ARCH_ID_x86_32)
+#	define stick_IS_ARCH_ARM (stick_ARCH_ID == stick_ARCH_ID_ARM)
+#	define stick_IS_ARCH_SPARK (stick_ARCH_ID == stick_ARCH_ID_SPARK)
+#	define stick_IS_ARCH_UNKNOWN (stick_ARCH_ID == stick_ARCH_ID_UNKNOWN)
 
 
 }   // namespace stick

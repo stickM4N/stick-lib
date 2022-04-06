@@ -124,19 +124,20 @@ namespace stick {
 #		define stick_COMPILER_VERSION stick_COMPILER_MAKE_VERSION(0, 0, 0)
 #	endif
 
-/**
- * Checks if current compiler is a specific one.
- * @def stick_IS_COMPILER_CLANG
- *	 	Checks if current compiler is Clang.
- * @def stick_IS_COMPILER_GCC
- * 		Checks if current compiler is GCC.
- * @def stick_IS_COMPILER_MSVC
- * 		Checks if current compiler is MSVC++.
- * @def stick_IS_COMPILER_SUNPRO
- * 		Checks if current compiler is Solaris Studio.
- * @def stick_IS_COMPILER_UNKNOWN
- * 		Checks if current compiler is unknown.
- */
+
+	/**
+	 * Checks if current compiler is a specific one.
+	 * @def stick_IS_COMPILER_CLANG
+	 *	 	Checks if current compiler is Clang.
+	 * @def stick_IS_COMPILER_GCC
+	 * 		Checks if current compiler is GCC.
+	 * @def stick_IS_COMPILER_MSVC
+	 * 		Checks if current compiler is MSVC++.
+	 * @def stick_IS_COMPILER_SUNPRO
+	 * 		Checks if current compiler is Solaris Studio.
+	 * @def stick_IS_COMPILER_UNKNOWN
+	 * 		Checks if current compiler is unknown.
+	 */
 #	define stick_IS_COMPILER_CLANG                                            \
 		(stick_COMPILER_ID == stick_COMPILER_ID_CLANG)
 #	define stick_IS_COMPILER_GCC (stick_COMPILER_ID == stick_COMPILER_ID_GCC)
